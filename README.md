@@ -21,6 +21,7 @@ Copy-Item .env.example .env
 ```env
 BOT_TOKEN=your_token
 DATABASE_URL=sqlite:///bot.db
+ADMIN_IDS=123456789
 ```
 
 4. Testlarni bazaga import qiling:
@@ -78,8 +79,9 @@ Noto'g'ri 3
 1. Railway loyihaga PostgreSQL qo'shing.
 2. Variables bo'limiga `BOT_TOKEN` qo'shing.
 3. Railway PostgreSQL odatda `DATABASE_URL` ni o'zi beradi.
-4. Deploy qiling. `Procfile` worker jarayonni ishga tushiradi.
-5. Railway shell yoki lokal terminal orqali bir marta import qiling:
+4. Admin panel kerak bo'lsa `ADMIN_IDS` qo'shing. Bir nechta admin bo'lsa vergul bilan yozing: `123,456`.
+5. Deploy qiling. `Procfile` worker jarayonni ishga tushiradi.
+6. Railway shell yoki lokal terminal orqali bir marta import qiling:
 
 ```powershell
 python import_tests.py tests_2025_26.json --replace

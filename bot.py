@@ -29,6 +29,20 @@ logger = logging.getLogger(__name__)
 DEFAULT_TEST_FILE = Path("tests_2025_26.json")
 
 
+def admin_ids() -> set[int]:
+    raw_ids = os.getenv("ADMIN_IDS", "")
+    ids = set()
+    for raw_id in raw_ids.replace(";", ",").split(","):
+        raw_id = raw_id.strip()
+        if raw_id.isdigit():
+            ids.add(int(raw_id))
+    return ids
+
+
+def is_admin(user_id: int) -> bool:
+    return user_id in admin_ids()
+
+
 @dataclass
 class AnswerRecord:
     question_id: int
@@ -52,11 +66,33 @@ class QuizState:
 active_quizzes: dict[int, QuizState] = {}
 
 
-def main_menu_keyboard() -> InlineKeyboardMarkup:
+def main_menu_keyboard(user_id: int | None = None) -> InlineKeyboardMarkup:
+    rows = [
+        [InlineKeyboardButton(text="Testni boshlash", callback_data="start_quiz")],
+        [InlineKeyboardButton(text="Statistika", callback_data="stats")],
+        [InlineKeyboardButton(text="Statistikani tozalash", callback_data="reset_stats_confirm")],
+    ]
+    if user_id is not None and is_admin(user_id):
+        rows.append([InlineKeyboardButton(text="Admin panel", callback_data="admin_panel")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def reset_stats_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Testni boshlash", callback_data="start_quiz")],
-            [InlineKeyboardButton(text="Statistika", callback_data="stats")],
+            [
+                InlineKeyboardButton(text="Ha, tozalash", callback_data="reset_stats"),
+                InlineKeyboardButton(text="Bekor qilish", callback_data="back_main"),
+            ]
+        ]
+    )
+
+
+def admin_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Userlar ro'yxati", callback_data="admin_users:0")],
+            [InlineKeyboardButton(text="Bosh menyu", callback_data="back_main")],
         ]
     )
 
@@ -157,7 +193,7 @@ async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
 async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
     state = active_quizzes.pop(user_id, None)
     if state is None:
-        await bot.send_message(chat_id, "Faol test topilmadi.", reply_markup=main_menu_keyboard())
+        await bot.send_message(chat_id, "Faol test topilmadi.", reply_markup=main_menu_keyboard(user_id))
         return
 
     total = len(state.question_ids)
@@ -201,7 +237,7 @@ async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
         f"To'g'ri javoblar: {state.correct_count}\n"
         f"Noto'g'ri javoblar: {state.wrong_count}\n"
         f"Natija: {percent}%",
-        reply_markup=main_menu_keyboard(),
+        reply_markup=main_menu_keyboard(user_id),
     )
 
 
@@ -222,7 +258,112 @@ async def show_stats(callback: CallbackQuery) -> None:
             f"Noto'g'ri javoblar: {user.total_wrong}\n"
             f"Umumiy foiz: {percent}%"
         )
-    await callback.message.edit_text(text, reply_markup=main_menu_keyboard())
+    await callback.message.edit_text(text, reply_markup=main_menu_keyboard(callback.from_user.id))
+    await callback.answer()
+
+
+async def confirm_reset_stats(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    await callback.message.edit_text(
+        "Statistikangizni tozalaysizmi? Bu amal test urinishlari tarixini ham o'chiradi.",
+        reply_markup=reset_stats_keyboard(),
+    )
+    await callback.answer()
+
+
+async def reset_stats(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    with get_session() as session:
+        user = session.query(User).filter(User.telegram_id == callback.from_user.id).one()
+        attempt_ids = [attempt_id for (attempt_id,) in session.query(QuizAttempt.id).filter(QuizAttempt.user_id == user.id)]
+        if attempt_ids:
+            session.query(QuizAnswer).filter(QuizAnswer.attempt_id.in_(attempt_ids)).delete(
+                synchronize_session=False
+            )
+            session.query(QuizAttempt).filter(QuizAttempt.id.in_(attempt_ids)).delete(
+                synchronize_session=False
+            )
+        user.total_attempts = 0
+        user.total_questions = 0
+        user.total_correct = 0
+        user.total_wrong = 0
+        user.last_seen_at = datetime.now(timezone.utc)
+        session.commit()
+
+    await callback.message.edit_text(
+        "Statistikangiz tozalandi.",
+        reply_markup=main_menu_keyboard(callback.from_user.id),
+    )
+    await callback.answer()
+
+
+def format_user_line(user: User, number: int) -> str:
+    username = f"@{user.username}" if user.username else "username yo'q"
+    full_name = " ".join(part for part in [user.first_name, user.last_name] if part) or "ism yo'q"
+    last_seen = user.last_seen_at.strftime("%Y-%m-%d %H:%M UTC") if user.last_seen_at else "noma'lum"
+    return (
+        f"{number}. {username} | {full_name}\n"
+        f"ID: {user.telegram_id} | Oxirgi faollik: {last_seen}\n"
+        f"Testlar: {user.total_attempts}, Savollar: {user.total_questions}, To'g'ri: {user.total_correct}"
+    )
+
+
+async def admin_panel(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Siz admin emassiz.", show_alert=True)
+        return
+
+    with get_session() as session:
+        users_count = session.query(User).count()
+        attempts_count = session.query(QuizAttempt).count()
+
+    await callback.message.edit_text(
+        "Admin panel\n\n"
+        f"Userlar soni: {users_count}\n"
+        f"Test urinishlari: {attempts_count}",
+        reply_markup=admin_keyboard(),
+    )
+    await callback.answer()
+
+
+async def admin_users(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Siz admin emassiz.", show_alert=True)
+        return
+
+    page = int(callback.data.split(":")[1])
+    page_size = 10
+    offset = page * page_size
+    with get_session() as session:
+        users_count = session.query(User).count()
+        users = (
+            session.query(User)
+            .order_by(User.last_seen_at.desc())
+            .offset(offset)
+            .limit(page_size)
+            .all()
+        )
+
+    if not users:
+        text = "Hali userlar yo'q."
+    else:
+        lines = [format_user_line(user, offset + index) for index, user in enumerate(users, start=1)]
+        text = f"Userlar ({users_count} ta)\n\n" + "\n\n".join(lines)
+
+    rows = []
+    nav = []
+    if page > 0:
+        nav.append(InlineKeyboardButton(text="Oldingi", callback_data=f"admin_users:{page - 1}"))
+    if offset + page_size < users_count:
+        nav.append(InlineKeyboardButton(text="Keyingi", callback_data=f"admin_users:{page + 1}"))
+    if nav:
+        rows.append(nav)
+    rows.append([InlineKeyboardButton(text="Admin panel", callback_data="admin_panel")])
+    rows.append([InlineKeyboardButton(text="Bosh menyu", callback_data="back_main")])
+
+    await callback.message.edit_text(text, reply_markup=InlineKeyboardMarkup(inline_keyboard=rows))
     await callback.answer()
 
 
@@ -230,7 +371,7 @@ async def on_start(message: Message) -> None:
     await upsert_user(message)
     await message.answer(
         "Assalomu alaykum! Test botga xush kelibsiz.",
-        reply_markup=main_menu_keyboard(),
+        reply_markup=main_menu_keyboard(message.from_user.id),
     )
 
 
@@ -248,7 +389,7 @@ async def on_quiz_size(callback: CallbackQuery) -> None:
     if len(question_ids) < size:
         await callback.message.edit_text(
             f"Bazada {size} ta savol yetarli emas. Hozir bor savollar soni: {len(question_ids)}",
-            reply_markup=main_menu_keyboard(),
+            reply_markup=main_menu_keyboard(callback.from_user.id),
         )
         await callback.answer()
         return
@@ -321,7 +462,7 @@ async def on_answer(callback: CallbackQuery) -> None:
 async def on_next_question(callback: CallbackQuery) -> None:
     state = active_quizzes.get(callback.from_user.id)
     if state is None:
-        await callback.message.edit_text("Test yakunlangan.", reply_markup=main_menu_keyboard())
+        await callback.message.edit_text("Test yakunlangan.", reply_markup=main_menu_keyboard(callback.from_user.id))
         await callback.answer()
         return
     await callback.message.edit_reply_markup(reply_markup=None)
@@ -330,7 +471,8 @@ async def on_next_question(callback: CallbackQuery) -> None:
 
 
 async def on_back_main(callback: CallbackQuery) -> None:
-    await callback.message.edit_text("Bosh menyu", reply_markup=main_menu_keyboard())
+    await upsert_user(callback)
+    await callback.message.edit_text("Bosh menyu", reply_markup=main_menu_keyboard(callback.from_user.id))
     await callback.answer()
 
 
@@ -350,6 +492,10 @@ async def main() -> None:
     dp.callback_query.register(on_answer, F.data.startswith("answer:"))
     dp.callback_query.register(on_next_question, F.data == "next_question")
     dp.callback_query.register(show_stats, F.data == "stats")
+    dp.callback_query.register(confirm_reset_stats, F.data == "reset_stats_confirm")
+    dp.callback_query.register(reset_stats, F.data == "reset_stats")
+    dp.callback_query.register(admin_panel, F.data == "admin_panel")
+    dp.callback_query.register(admin_users, F.data.startswith("admin_users:"))
     dp.callback_query.register(on_back_main, F.data == "back_main")
 
     await dp.start_polling(bot)
