@@ -60,7 +60,7 @@ def read_docx_tables(document) -> list[dict]:
             cells += [""] * (7 - len(cells))
             number, _, question, answer1, answer2, answer3, answer4 = cells[:7]
 
-            is_header = "Test topshirig" in question or "To‘g‘ri javob" in answer1
+            is_header = "Test topshirig" in question or "javob" in answer1.lower()
             has_number = bool(re.search(r"\d+", number))
             answers = [answer1, answer2, answer3, answer4]
 

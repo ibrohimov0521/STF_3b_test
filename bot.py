@@ -69,8 +69,7 @@ active_quizzes: dict[int, QuizState] = {}
 def main_menu_keyboard(user_id: int | None = None) -> InlineKeyboardMarkup:
     rows = [
         [InlineKeyboardButton(text="Testni boshlash", callback_data="start_quiz")],
-        [InlineKeyboardButton(text="Statistika", callback_data="stats")],
-        [InlineKeyboardButton(text="Statistikani tozalash", callback_data="reset_stats_confirm")],
+        [InlineKeyboardButton(text="Natijalarim", callback_data="stats")],
     ]
     if user_id is not None and is_admin(user_id):
         rows.append([InlineKeyboardButton(text="Admin panel", callback_data="admin_panel")])
@@ -82,8 +81,17 @@ def reset_stats_keyboard() -> InlineKeyboardMarkup:
         inline_keyboard=[
             [
                 InlineKeyboardButton(text="Ha, tozalash", callback_data="reset_stats"),
-                InlineKeyboardButton(text="Bekor qilish", callback_data="back_main"),
+                InlineKeyboardButton(text="Bekor qilish", callback_data="stats"),
             ]
+        ]
+    )
+
+
+def results_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Statistikani tozalash", callback_data="reset_stats_confirm")],
+            [InlineKeyboardButton(text="Bosh menyu", callback_data="back_main")],
         ]
     )
 
@@ -104,6 +112,14 @@ def quiz_size_keyboard() -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text="10 talik", callback_data="quiz_size:10"),
                 InlineKeyboardButton(text="20 talik", callback_data="quiz_size:20"),
                 InlineKeyboardButton(text="30 talik", callback_data="quiz_size:30"),
+            ],
+            [
+                InlineKeyboardButton(text="1-variant (50 ta)", callback_data="quiz_variant:1"),
+                InlineKeyboardButton(text="2-variant (50 ta)", callback_data="quiz_variant:2"),
+            ],
+            [
+                InlineKeyboardButton(text="3-variant (50 ta)", callback_data="quiz_variant:3"),
+                InlineKeyboardButton(text="4-variant (50 ta)", callback_data="quiz_variant:4"),
             ],
             [InlineKeyboardButton(text="Ortga", callback_data="back_main")],
         ]
@@ -153,6 +169,21 @@ async def get_random_question_ids(limit: int) -> list[int]:
         ids = [row[0] for row in session.query(Question.id).all()]
     random.shuffle(ids)
     return ids[:limit]
+
+
+async def get_variant_question_ids(variant_number: int, variant_size: int = 50) -> list[int]:
+    offset = (variant_number - 1) * variant_size
+    with get_session() as session:
+        return [
+            row[0]
+            for row in (
+                session.query(Question.id)
+                .order_by(Question.id.asc())
+                .offset(offset)
+                .limit(variant_size)
+                .all()
+            )
+        ]
 
 
 def seed_tests_if_empty() -> None:
@@ -251,14 +282,14 @@ async def show_stats(callback: CallbackQuery) -> None:
             else 0
         )
         text = (
-            "Sizning statistikangiz:\n\n"
-            f"Urinishlar: {user.total_attempts}\n"
+            "Natijalarim:\n\n"
+            f"Ishlangan testlar: {user.total_attempts}\n"
             f"Jami savollar: {user.total_questions}\n"
             f"To'g'ri javoblar: {user.total_correct}\n"
             f"Noto'g'ri javoblar: {user.total_wrong}\n"
-            f"Umumiy foiz: {percent}%"
+            f"O'rtacha yechilish: {percent}%"
         )
-    await callback.message.edit_text(text, reply_markup=main_menu_keyboard(callback.from_user.id))
+    await callback.message.edit_text(text, reply_markup=results_keyboard())
     await callback.answer()
 
 
@@ -403,6 +434,28 @@ async def on_quiz_size(callback: CallbackQuery) -> None:
     await callback.answer()
 
 
+async def on_quiz_variant(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    variant_number = int(callback.data.split(":")[1])
+    question_ids = await get_variant_question_ids(variant_number)
+
+    if len(question_ids) < 50:
+        await callback.message.edit_text(
+            f"{variant_number}-variant uchun 50 ta savol yetarli emas. Hozir bor savollar soni: {len(question_ids)}",
+            reply_markup=main_menu_keyboard(callback.from_user.id),
+        )
+        await callback.answer()
+        return
+
+    active_quizzes[callback.from_user.id] = QuizState(
+        question_ids=question_ids,
+        started_at=datetime.now(timezone.utc),
+    )
+    await callback.message.edit_text(f"{variant_number}-variant boshlandi. Omad!")
+    await send_question(callback.bot, callback.message.chat.id, callback.from_user.id)
+    await callback.answer()
+
+
 async def on_answer(callback: CallbackQuery) -> None:
     state = active_quizzes.get(callback.from_user.id)
     if state is None:
@@ -489,6 +542,7 @@ async def main() -> None:
     dp.message.register(on_start, CommandStart())
     dp.callback_query.register(on_start_quiz, F.data == "start_quiz")
     dp.callback_query.register(on_quiz_size, F.data.startswith("quiz_size:"))
+    dp.callback_query.register(on_quiz_variant, F.data.startswith("quiz_variant:"))
     dp.callback_query.register(on_answer, F.data.startswith("answer:"))
     dp.callback_query.register(on_next_question, F.data == "next_question")
     dp.callback_query.register(show_stats, F.data == "stats")
