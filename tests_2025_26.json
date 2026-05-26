@@ -1,0 +1,2002 @@
+[
+  {
+    "question": "“O’zbekiston temir yo’llari” kompaniyasi nechanchi yilda barpo etilgan",
+    "answers": [
+      "1994-yil 7-noyabr",
+      "1991",
+      "1990",
+      "1992"
+    ],
+    "info": null
+  },
+  {
+    "question": "“O’zbekiston temir yo’llari” AJda nechta MTU mavjud?",
+    "answers": [
+      "6",
+      "5",
+      "4",
+      "7"
+    ],
+    "info": null
+  },
+  {
+    "question": "MTU nima degani?",
+    "answers": [
+      "Mintaqaviy temir yo’l uzeli",
+      "Maxalliy temir yo’l uzeli",
+      "Mintaqaviy temir yo’l uchastkasi",
+      "Maxsus temir yo’l uchastkasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Nima uchun temir yo‘l liniyalari ajratish punktlariga bo‘linadi?",
+    "answers": [
+      "Poyezdlar xarakat xavfsizligini ta’minlash uchun",
+      "temir yo‘l transporti ishini xisobga olish uchun",
+      "ajratish punktlari sonini ko‘paytirish uchun",
+      "ta’mirlash ishlarini bajarish uchun"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyalar qaysi xarakteriga ko‘ra sinflarga tasniflanadi?",
+    "answers": [
+      "Bajaradigan ish hajmiga qarab beriladigan ballar bo’yicha",
+      "stansiyaning texnik jixozlanganlik darajasiga bo‘yicha",
+      "yo‘llar soni miqdori bo‘yicha",
+      "stansiyada tuziladigan poyezdlar yo‘nalishi soni miqlori bo‘yicha"
+    ],
+    "info": null
+  },
+  {
+    "question": "Shartli vagon–bu…?",
+    "answers": [
+      "Tarkibning shartli uzunligi o’lchov birligi",
+      "yil davomida mazkur liniyada yuk tashish xajmi (tonnada)",
+      "sutka davomida stansiya maksimal darajada vagonlarni qayta ishlay olishi",
+      "lokomotivlarning bir yo‘nalishga qatnash masofasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Har bir parkda bajariladigan jarayоnlar texnologiyаsi qaysi hujjatda belgilangan?",
+    "answers": [
+      "Stansiya ishi texnologiyasi jarayonlari",
+      "poyezdlar tuzish rejasi",
+      "texnik foydalanish qoidalari",
+      "poyezdlar harakat grafigi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Oraliq stansiyasi uchun qaysi hujjat ishlab chiqiladi?",
+    "answers": [
+      "Texnologik xarita",
+      "temir yo‘l Ustavi",
+      "temir yo‘llardan texnikaviy foydalanish qoidalari",
+      "stansiya ishining texnologik jarayoni"
+    ],
+    "info": null
+  },
+  {
+    "question": "Terma poyezd vazifasi qanday?",
+    "answers": [
+      "Uchastka oraliq stansiyalariga xizmat ko’rsatish",
+      "texnik stansiyalarga xizmat ko‘rsatish",
+      "uzelda joylashgan stansiyalariga xizmat ko‘rsatish",
+      "MTUda joylashgan stansiyalariga xizmat ko‘rsatish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyasining asosiy vazifasi nimalardan iborat?",
+    "answers": [
+      "Tranzit poezdlari bilan ishlash,lokomotiv va lokomotiv brigadalari almashishi",
+      "vagonlarni ortish va tushirish",
+      "vagonlarni saralash",
+      "poyezd tuzish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tepalik qanday qismlardan iborat?",
+    "answers": [
+      "Siljitish qismi,tepalik cho’qqisi,tushirish qismi",
+      "Maydoncha, tepalik cho‘qqisi, tushirish qismi",
+      "Siljitish qismi, tepalik cho‘qqisi, maydoncha",
+      "Tortuv yo’li, tepalik cho‘qqisi, tushirish qismi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yuk stansiyalari deb ...",
+    "answers": [
+      "Yuklarni qabul qilish,topshirish,taroziga tortish,vagonga yuklash-tushirish,yuk xujjatlarini rasmiylashtirish,shahobcha yo’llariga xizmat ko’rsatish ishlari bajariladigan stansiyaga aytiladi",
+      "asosan tranzit poyezdlariga xizmat ko‘rsatuvchi stansiyalarga aytiladi",
+      "asosan poyezdlarni tuzish va tarqatishga mo‘ljallangan stansiyalarga aytiladi",
+      "yo‘lovchilarga va yo‘lovchi poyezdlariga xizmat ko‘rsatuvchi stansiyalarga aytiladi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lovchi stansiyalarida qanday amallar bajariladi?",
+    "answers": [
+      "Yo’lovchilarga va yo’lovchi poyezdlariga xizmat ko’rsatish",
+      "asosan tranzit poyezdlari bilan",
+      "poyezdlarni qabul qilishjo‘natish, va kam miqdorda yuk operatsiyalari",
+      "asosan poyezdlarni tuzish va tarqatish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Avtoblokirovka tizimida chiqish svetofori ochilmasa, poyezd bir yo‘llik peregonga qaysi tartibda jo‘natiladi?",
+    "answers": [
+      "DU-54 shaklidagi ruxsatnomaga asosan",
+      "chiqish svetoforidagi taklif signaliga binoan",
+      "avtoblokirovka amal qilishi poyezd dispetcherining buyrug’i bilan avtoblokirovka tizimi to‘xtatiladi va poyezdlarning harakati telefon aloqa vositalari bo‘yicha o‘rnatiladi",
+      "chiqish svetofori tuzatilgunga qadar poyezd peregonga jo‘natilmaydi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Mahalliy ishlarga qaysi operatsiyalar kirmaydi?",
+    "answers": [
+      "Vagonlarni tijoriy ko’rikdan o’tkazish",
+      "yuklash",
+      "tushirish",
+      "yuk frontlariga vagonlarni olib kirish va olib chiqish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Lokomotivlarning profilaktik ko‘rigi va ta’mirlash ishlari qaerda bajariladi?",
+    "answers": [
+      "Asosiy depoda",
+      "aylanish deposida",
+      "lokomotiv almashish punktlarida",
+      "lokomotiv brigadalari almashish punktlarida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaning texnikaviyboshqaruv dalolatnomasi kim tomonidan tuziladi?",
+    "answers": [
+      "Stansiya boshlig’I tomonidan",
+      "stansiyaning bosh muhandisi tomonidan",
+      "mintaqaviy temir yo‘l uzelining bosh muhandisi tomonidan",
+      "mintaqaviy temir yo‘l uzeli boshlig’i tomonidan"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyalarida... amallari bajariladi.",
+    "answers": [
+      "Asosan poyezdlarni tuzish va tarqatish",
+      "asosan tranzit poyezdlar",
+      "poyezdlarni tuzish va tarqatishga, vagonlarning texnikaviy yoki nazorat ko‘ruvini o‘tkazishga, yuk va bagajni ortish va tushirishga, yo‘lovchilarni vagonlarga chiqarish va tushirish",
+      "yo‘lovchilarga va yo‘lovchi poyezdlariga xizmat ko‘rsatish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyasining asosiy elementi qaysi?",
+    "answers": [
+      "Saralash tepaligi",
+      "tortish yo‘li",
+      "qabul qilish-jo‘natish parkining o‘tkazish qobiliyati",
+      "saralash parki yo‘llari"
+    ],
+    "info": null
+  },
+  {
+    "question": "...ajratish punktlari hisoblanmaydi",
+    "answers": [
+      "pereezdlar",
+      "stansiyalar",
+      "o‘zib o‘tish punkti",
+      "o‘tish svetofori"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi lokomotivlar ishsiz parkga kiradi?",
+    "answers": [
+      "Nosoz va zaxiradagi lokomotivlar",
+      "poyezd ishlari bilan band lokomotivlar",
+      "manevr ishlari bilan band lokomotivlar",
+      "rezerv asosida harakatlanayotgan lokomotivlar"
+    ],
+    "info": null
+  },
+  {
+    "question": "... - stansiyalar, raz’ezdlar va o‘zib o‘tish punktlari bilan chegaralangan masofa",
+    "answers": [
+      "Stansiyalararo peregon",
+      "blok-post",
+      "blok-uchastka",
+      "postlararo peregon"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manevr tarkibi deb nimaga aytiladi?",
+    "answers": [
+      "Manevr ishlari o’tkazayotgan lokomotiv bilan o’zaro biriktirilgan vagonlar guruhi",
+      "tuzilib harakat dagi lokomotivga ulangan va signallar bilan jixozlangan tarkib",
+      "lokomotivlar, vagonlar va motorvagon harakat tarkibi",
+      "refrejirator vagonlardan tashkil topgan tarkib"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manevr yаrimreysi deb nimaga aytiladi?",
+    "answers": [
+      "Lokomotivning o’zi yoki vagonalari bilan stansiya yo’llari bo’ylab harakat yo’nalishini o’zgartirmagan xoldagi harakatlanishi",
+      "ma’lum bir jarayоnni bajarish uchun tarkibni, vagonlarni yоki vagonlar guruhining stansiyа yo’llari bo’ylab harakati",
+      "harakat tarkibining ajratish punktlari oralig’idagi peregondagi harakati.",
+      "stansiyа yo’llari bo’ylab lokomotivning o’zi yоki vagonlari bilan harakat yo’nalishini o’zgartirgan xoldagi harakati"
+    ],
+    "info": null
+  },
+  {
+    "question": "Peregondagi poyezdlar harakatini boshqarish va nazorat qilish qurilmalarining qaysi birida o‘tish svetoforlari mavjud?",
+    "answers": [
+      "Avtomatik blokirovkada",
+      "telefon aloqa vositalarida",
+      "elektr jezl tizimida",
+      "Evropa temir yo‘l transportida harakatni boshqarish tizimlarida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Lokomotiv aylanmasi nima degani?",
+    "answers": [
+      "Bu lokomotivning asosiy depo stansiyasidan jo’nab ketgan vaqtidan keyingi ushbu stansiyadan jo’nab ketish vaqtlari miqdori",
+      "lokomotivning aylanish punktida turish vaqti",
+      "lokomotivning asosiy depo stansiyasida turish vaqti",
+      "lokomotiv brigadalari almashish punktida lokomotivlarning turish vaqti"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘lda yuk tashish ishlarining zichligi nimani tavsiflaydi?",
+    "answers": [
+      "Temir yo’lning 1km ekspluatatsiya uzunligiga to’g’ri keluvchi yillik tonna-kilometrni",
+      "temir yo‘lning 10 km ekspluatatsiya uzunligiga to‘g‘ri keluvchi yillik tonna-kilometrni",
+      "temir yo‘lning 1000 km ekspluatatsiya uzunligiga to‘g‘ri keluvchi yillik tonna-kilometrni",
+      "temir yo‘lning 100 m ekspluatatsiya uzunligiga to‘g‘ri keluvchi yillik tonna-kilometrni"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi hujjat temir yo‘l transportining korxona va xodimlari uchun majburiy?",
+    "answers": [
+      "Texnik foydalanish qoidalari",
+      "stansiyа ishi texnologik jarayoni",
+      "signalizasiyа bo‘yicha yo‘riqnoma",
+      "poyezdlar tuzish rejasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Vagonlarni tortish yo‘llarida saralashning qanday usuli mavjud еmas?",
+    "answers": [
+      "Tortish usuli",
+      "ketma-ket turtki usuli",
+      "surish usuli",
+      "bir guruhli turtki usuli"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ishchi yаrimreys deb nimaga aytiladi?",
+    "answers": [
+      "Lokomotivning vagonlar bilan stansiya yo’llaridagi harakati",
+      "lokomotivning vagonlarsiz stansiyа yo’llari bo’ylab harakati",
+      "harakat tarkibining peregondagi harakatlanishi",
+      "lokomotivning peregondagi vagonlarsiz harakati"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manevr reysi deb nimaga aytiladi?",
+    "answers": [
+      "Stansiya yo’llari bo’ylab lokomotivning o’zi yoki vagonlari bilan harakat yo’nalishini o’zgartirgan holdagi harakati",
+      "ma’lum bir jarayоnni bajarish uchun tarkibni, vagonlarni yоki vagonlar guruxining stansiyа yo’llari bo’ylab harakati",
+      "lokomotivning o’zi yоki vagonlari bilan stansiyа yo’llari bo’y lab harakat yo’nalishini o’zgartirmagan xoldagi harakatlanishi",
+      "harakat tarkibining ajratish punktlari oralig’idagi peregondagi harakati"
+    ],
+    "info": null
+  },
+  {
+    "question": "IV sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "1-6 ball",
+      "14-30 ball",
+      "1 ballgacha",
+      "6-14 ball"
+    ],
+    "info": null
+  },
+  {
+    "question": "III sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "6-14 ball",
+      "1-6 ball",
+      "14-30 ball",
+      "1 ballgacha"
+    ],
+    "info": null
+  },
+  {
+    "question": "II sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "14-30 ball",
+      "6-14 ball",
+      "1-6 ball",
+      "1 ballgacha"
+    ],
+    "info": null
+  },
+  {
+    "question": "I sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "30-75 ball",
+      "14-30 ball",
+      "6-14 ball",
+      "1-6 ball"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yuqori (oliy) sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "75 ball va undan ko’p",
+      "30-75 ball",
+      "14-30 ball",
+      "6-14 ball"
+    ],
+    "info": null
+  },
+  {
+    "question": "V sinf stansiyаlari qanday umumiy ballga еga bo‘lishi lozim?",
+    "answers": [
+      "1 ballgacha",
+      "6-14 ball",
+      "1-6 ball",
+      "14-30 ball"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qabul qilinishi uslubiga ko‘ra signallar qanday turlarga bo'linadi?",
+    "answers": [
+      "Ko’rinadigan va ovozli",
+      "shitlar va bayroqchalar",
+      "belgilar",
+      "kunduzgi va tungi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Agar yo‘l davomida saralash ishlari olib borilsa…poyezd deyiladi",
+    "answers": [
+      "Qayta ishlanadigan va mahalliy vagon",
+      "yo’lovchi",
+      "qayta ishlanmaydigan",
+      "xususiy"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdning borish manzili ... stansiyasi bo‘yicha aniqlanadi",
+    "answers": [
+      "tarqatilish",
+      "tushirish",
+      "tuzilish",
+      "yuklanishi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezd dispetcheri ....chizib boradi",
+    "answers": [
+      "Bajarilgan harakat grafigini",
+      "poyezdlarning tuzilish rejasini",
+      "manyovr ishlari grafigini",
+      "stansiyaning sutkalik ish reja grafigi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlarning quyida keltirilgan qanday harakat tezligi еng yuqori hisoblanadi?",
+    "answers": [
+      "Yurish tezligi",
+      "texnik tezligi",
+      "uchastka tezligi",
+      "marshrut tezligi"
+    ],
+    "info": null
+  },
+  {
+    "question": "O‘tkazuvchanlik qobiliyatini oshirish bo‘yicha tashkiliytexnik tadbirlarga nimalar mansub еmas?",
+    "answers": [
+      "Stansiya yo’llari uzaytirish",
+      "grafikning nisbatan samarali turlarini qo‘llash",
+      "poyezdlarni ikkilantirish va qo‘shish",
+      "stansiyаlar aro intervallarni qisqartirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Rekonstruktiv tadbirlarga nimalar mansub еmas?",
+    "answers": [
+      "Grafiklarning nisbatan samarali turlarini qo’llash",
+      "ikkinchi bosh yo‘llarni qurish",
+      "stansiyа yo‘llarini cho‘zish",
+      "temir yo‘llarni еlektrlashtirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quyidagilardan qaysi biri poyezd o‘tkazish qobiliyatini oshirishning rekonstruktiv chora-tadbirlariga kirmaydi?",
+    "answers": [
+      "Poyezdlarni paketlab jo’natish intervalini kamaytirish",
+      "blok-postlar qurish",
+      "stansiya yo‘llarini uzaytirish",
+      "yangi harakat tarkibini ishga tushirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiya intervalini kamaytirishda nimaning hisobiga poyezd o‘tkazish qobiliyati oshadi?",
+    "answers": [
+      "Grafik davrining kamayishi",
+      "poyezdlarning stansiyada yurish vaqtining kamayishi",
+      "poyezdlarni stansiyadan o‘tkazish vaqtining kamayishi",
+      "poyezdlarni jo‘natishga tayyorlash jarayonini tezlashtirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlarni peregonlar bo‘yicha toza yurish vaqti qanday hisoblanadi?",
+    "answers": [
+      "Tortuv hisoblari bo’yicha",
+      "xronometrik kuzatuvlar bo‘yicha",
+      "analitik usul bilan",
+      "sinov harakatlar yоrdamida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlar harakati grafigi tuzilish sifatini baholovchi asosiy ko‘rsatkich nima?",
+    "answers": [
+      "Tezlik koeffitsient",
+      "yurish tezligi",
+      "xamma turdagi poyezdlarning grafikga tushirilish soni",
+      "uchastka o‘tkazish qobiliyatining to‘ldirilish darajasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi alomatlariga ko’ra saralash stansiyаlari bir tomonlama va ikki tomonlamalilarga bo’linadi?",
+    "answers": [
+      "Saralash komplekslari soniga ko’ra",
+      "parklarning o’zaro joylashuviga ko’ra",
+      "texnik jixozlanganligiga ko’ra",
+      "ish xajmi va xarakteriga ko’ra"
+    ],
+    "info": null
+  },
+  {
+    "question": "O‘zbekiston respublikasi temir yơllarida poyezdlar tuzish rejasini qahcha muddatga ishlab chiqiladi va uni kim tasdiqlaydi?",
+    "answers": [
+      "1 yil muddatga ishlab chiqiladi va boshqaruv raisi tasdiqlaydi",
+      "O‘zbekiston respublikasi temir yơllarida poyezdlar tuzish rejasini 1 oy muddatga ishlab chiqiladi va uni “Tashishlarni tashkil qilish boshqarmasi” tasdiqlaydi",
+      "O‘zbekiston respublikasi temir yơllarida poyezdlar tuzish rejasini 1 yil muddatga ishlab chiqiladi va uni “Yagona dispetcherlik markazi” tasdiqlaydi",
+      "O‘zbekiston respublikasi temir yơllarida poyezdlar tuzish rejasini 1 yil muddatga ishlab chiqiladi va uni “Tashishlarni tashkil qilish boshqarmasi” tasdiqlaydi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlarni tarqatish jarayoni ularni qabul qilish jarayoni bilan qanday bog‘lanishi kerak?",
+    "answers": [
+      "Poyezdlarni tarqatish jarayoni ularni qabul qilish jarayoniga nisbatan tez yoki unga teng bo’lish kerak",
+      "poyezdlarni tarqatish jarayoni ularni qabul qilish jarayoniga nisbatan sekin yoki unga teng bo‘lishi kerak",
+      "poyezdlarni tarqatish jarayoni ularni qabul qilish jarayoniga teng bo‘lishi kerak",
+      "bular bir-biriga bog‘liq emas"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tepalikning soatli o‘tkazish qobiliyati qaysi formula bilan aniqlanadi?",
+    "answers": [
+      "Пch=60*Ts\\tch",
+      "1440 пch тs tch",
+      "1440 пch  тs Тch",
+      "пch Аqp Бтс"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi vaqtdan boshlab mashinist ishda hisoblanadi?",
+    "answers": [
+      "Lokomotivni qabul qilish vaqtidan boshlab",
+      "uni ishga chaqirgan vaqtidan boshlab",
+      "depoga kelgan vaqtidan boshlab",
+      "poyezd bilan yo‘lga chiqgan vaqtidan boshlab"
+    ],
+    "info": null
+  },
+  {
+    "question": "... - yo‘lovchi va yuk poyezdlari grafik bo‘yicha (jami) bir kecha-kunduzda ko‘pi bilan 8 juft miqdorda o‘tadigan uchastkalar",
+    "answers": [
+      "Kam ishlaydigan uchastkalar",
+      "poyezdlarning o'ta jadal harakati",
+      "poyezdlarning jadal harakati",
+      "poyezdlarning nisbiy harakati"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tarkibidagi guruhlar soniga ko‘ra yuk poyezdlarining qaysi turlari mavjud?",
+    "answers": [
+      "Bir guruhli va guruhli poyezdlar",
+      "yuklangan, bo‘sh va aralash tarkibdagi poyezdlar",
+      "chiqaruvchi va uzatuvchi poyezdlar",
+      "uzatuvchi va xo‘jalik poyezdlari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlar harakatida buyruqlarni uzatish uchun ko‘rinadigan va еshitiladigan ishoratlar tizimini qaysi hujjat belgilaydi?",
+    "answers": [
+      "O’zbekiston temir yo’llarida signallashtirish bo’yicha yo’riqnoma",
+      "O‘zbekiston respublikasi temir yơllaridantexnikaviy foydalanish qoidalari",
+      "poyezdlar harakati grafigi",
+      "poyezdlar tuzish rejasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiya ishchilarining huquq va majburiyatlarini belgilaydigan hujjat qaysi?",
+    "answers": [
+      "Temir yo’l stansiyasi nizomi",
+      "temir yo‘llar ustavi",
+      "temir yo‘llardan texnik foydalanish qoidalari",
+      "texnik tarqatilgan dalolatnoma"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ish vazifasi va xarakteri tasnifiga ko‘ra qaysi stansiyalar mavjud emas?",
+    "answers": [
+      "uzel",
+      "saralash",
+      "oraliq",
+      "uchastka"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tuzilish shartlari bo‘yicha yuklash joylaridan marshrutlar qanday turlarga bo‘linadi?",
+    "answers": [
+      "Pog’anasimon va jo’natuvchi",
+      "to‘g‘ri va taqsimlangan",
+      "pog‘onasimon, taqsimlangan",
+      "to‘g‘ri, jo‘natish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ajratish punktlariga nimalar kiradi?",
+    "answers": [
+      "Raz’ezdlar",
+      "yo‘l belgilari",
+      "chegara qoziqchalari",
+      "signal belgilari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi yarim reys bo‘sh (xolostoy) deb ataladi?",
+    "answers": [
+      "Birgina lokomotivning o’zi vagonlarsiz stansiya yo’llari bo’ylab harakati",
+      "lokomotivning vagonlar bilan stansiya yo‘llari bo‘ylab harakatlanishi",
+      "lokomotivning vagonlar bilan peregonda harakatlanishi",
+      "lokomotivning yolg‘iz holda peregonda harakatlanishi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quyidagilardan qaysi biri son ko‘rsatkichga kiradi?",
+    "answers": [
+      "Vagonlarga yuklash",
+      "ishchi vagon aylanishi",
+      "ishchi vagonlar parki",
+      "vagonga to‘g‘ri keladigan statik yuklama"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka tezligi koeffitsiyenti — bu tezliklarning qaysi nisbatidir?",
+    "answers": [
+      "Uchastka tezligining texnik tezligiga",
+      "texnik tezlikning yurish (xodovaya) tezligiga nisbati",
+      "yurish tezligining texnik tezlikka nisbati",
+      "texnik tezlikning uchastka tezligiga nisbati"
+    ],
+    "info": null
+  },
+  {
+    "question": "O‘tkinchi (сквозной) poyezdlar qanday raqamlanadi?",
+    "answers": [
+      "2001-2998",
+      "3399-3998",
+      "2000-3399",
+      "3000-3399"
+    ],
+    "info": null
+  },
+  {
+    "question": "Terma poyezdlar qanday raqamlanadi?",
+    "answers": [
+      "3401-3498",
+      "2000-2999",
+      "3000-3399",
+      "2000-3999"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka poyezdlari qanday raqamlanadi?",
+    "answers": [
+      "3001-3398",
+      "3401-3498",
+      "2000-2999",
+      "8001-8048"
+    ],
+    "info": null
+  },
+  {
+    "question": "Olib chiquvchi poyezdlar qanday raqamlanadi?",
+    "answers": [
+      "3501-3598",
+      "3401-3498",
+      "2000-2999",
+      "8001-8048"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uzatuvchi poyezdlar qanday raqamlanadi?",
+    "answers": [
+      "3601-3798",
+      "3401-3498",
+      "2000-2999",
+      "8001-8048"
+    ],
+    "info": null
+  },
+  {
+    "question": "Strelkali o‘tkazgichlardan foydalanishda nechta nosozligi bor?",
+    "answers": [
+      "9",
+      "11",
+      "8",
+      "7"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l transportiga tegishli muhim inshootlar, qurilmalar va harakat tarkiblarini saqlash me’yorlari, asosiy o‘lchamlar va ularga bo‘lgan talablar qaysi hujjat asosida o‘rnatiladi?",
+    "answers": [
+      "O’zbekiston respublikasi temir yo’llaridan texnikaviy foydalanish qoidalari",
+      "Temiryo‘llarda poyezdlar harakati va manyovr ishlar bo‘yicha Yo‘riqnoma",
+      "Texnikaviy boshqaruv dalolatnoma",
+      "“O‘TY” AJ raisining 1-N sonli buyrug‘i"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l transporti xodimlarining TFQga rioya qilishi bo‘yicha javobgarlik kimning zimmasiga yuklatiladi?",
+    "answers": [
+      "Temir yo’l transportixodimlarining TFQ ga amal qilishi bo’yicha javobgarlik tegishli bo’linmalarning rahbarlari zimmasiga",
+      "mehnat faoliyati poyezdlar harakati bilan aloqador xodimlar",
+      "temir yo‘l transporti xodimlari",
+      "yuk jo‘natuvchilar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xodimlar o‘z xizmat vazifalari doirasida texnikaviy foydalanish qoidalarining bajarilishi va xavfsizligi uchun javob beradi?",
+    "answers": [
+      "Poyezdlar harakati bilan bog’liq har bir xodim",
+      "faqatgina tegishli bo‘lim rahbarlari",
+      "har bir yuk jo‘natuvchi",
+      "har bir yuk oluvchi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xodimlar navbatdan tashqari tibbiy ko‘rikdan o‘tish huquqiga ega?",
+    "answers": [
+      "Xodimning talabi: Agar xodim oʻz sogʻligʻining holati mehnat sharoiti bilan bogʻliq holda yomonlashgan deb hisoblasa. Ish beruvchining tashabbusi: Xodimning sogʻligʻi yomonlashgani yoki xavfsizlik talablariga javob bermayotgani toʻgʻrisida asosli shubha boʻlganda. Baxtsiz hodisa yoki kasallik: Uzoq muddatli kasallikdan keyin yoki ishlab chiqarishdagi baxtsiz hodisadan soʻng ishga qaytganda.",
+      "temir yo‘l transportiga poyezdlar harakati bilan bog‘liq bo‘lgan lavozimlarga ishga qabul qilinuvchi shaxslar",
+      "alkogol moddalar iste’mol qilgan shaxslar",
+      "18 yoshdan kichik shaxslar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tibbiy komissiya tomonidan yaroqsiz deb topilgan shaxslar qaysi lavozimlarga ishga qabul qilinishi qat’iyan ta’qiqlanadi?",
+    "answers": [
+      "Poyezdlar harakati bilan aloqador bo’lgan lavozimlarga",
+      "stansiyani tekshirish bilan bog‘liq ishlarga",
+      "stansiya xududini tozalash bilan bog‘liq bo‘lgan ishlarga",
+      "poyezdlarni qayta ishlash bilan bog‘liq ishlarga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Kimlarning harakat xavfsizligiga oid me’yoriy hujjatlarni bilishlari davriy ravishda tekshirib boriladi?",
+    "answers": [
+      "Temir yo’l transportiga poyezdlar harakati bilan bog’liq bo’lgan lavozimlarga ishga kirgan shaxslar",
+      "18 yoshdan kichik shaxslar",
+      "temir yo‘l transporti xodimlarining umumiy majburiyatlarini bilmaydigan xodimlar",
+      "hushyor holatda bo‘lmagan shaxslar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlar harakati bilan bog‘liq bo‘lgan lavozimlarga ishga qabul qilinuvchi shaxslar necha yoshdan kichik bo‘lmasligi lozim?",
+    "answers": [
+      "18",
+      "16",
+      "23",
+      "25"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qanday shaxslarga o‘z xizmat vazifalarini bajarishlariga ruxsat berilmaydi?",
+    "answers": [
+      "Temir yo’l transporti xodimlarining alkogolli ichimliklar,giyohvand moddalar iste’mol qilgan holda",
+      "18 yoshdan kichik bo‘lgan shaxslar",
+      "kasb kiyimida bo‘lmagan xodimlar",
+      "temir yo‘l transporti xodimlarining umumiy majburiyatlarini bilmaydigan xodimlar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Peregon nima?",
+    "answers": [
+      "Temir yo’l infratuzilmalarining qo’shni stansiyalar,raz’ezdlar,o’zib o’tish punktlari yoki yo’l postlari bilan chegaralangan qismi (ikki stansiya orasi)",
+      "oraliq stansiya",
+      "alohida punkt",
+      "stansiya chegarasi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlar harakati uchun to‘siq joylarni, signal qizil shit bilan qanday masofada to‘siladi?",
+    "answers": [
+      "50m",
+      "200 m",
+      "800 m",
+      "80 m"
+    ],
+    "info": null
+  },
+  {
+    "question": "Texnikaviy fodalanish qoidalari talablari asosida poyedlarni tuzishda qanday omillar hisobga olinadi?",
+    "answers": [
+      "Yuk poezdni og’irligiga va uzunligiga",
+      "Yuk poyezdi indeksi, kodi, poyezdlarni tuzish tartibi va x.k",
+      "Stansiya kodi, chegarasi, rels izi kengligi va x.k",
+      "faqat poyezdlar harakati grafigiga qaraladi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezd tarkibiga qanday vagonlarni ulash mumkin?",
+    "answers": [
+      "Soz vagonlarni,harakat xavfsizligiga xavf tug’dirmaydigan butligini saqlaydigan vagonlarni",
+      "nosoz, yuklar butligini ta’minlamaydigan, 49 me’yordan ortiqvagonli",
+      "texnikaviy talablarni buzib yuklangan platform va yarim ochiq vagonlarni",
+      "kuzovi qiyshagan, nosoz romli vagonlarni"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l transportida poyezdlar harakatini tashkil etish asosi bu…",
+    "answers": [
+      "Harakat grafigi",
+      "Stansiya sxemasi",
+      "Harakatlanish jadvali",
+      "Ishlar jadvali"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uzunligi oshirilgan yuk poyezdi – bu ....",
+    "answers": [
+      "Uzunligi 350 o’q va undan ortiq bo’lgan yuk poyezdi",
+      "uzunligi 250 o‘q va undan ortiq bo‘lgan yuk poyezdi",
+      "uzunligi 450 o‘q va undan ortiq bo‘lgan yuk poyezdi",
+      "uzunligi 550 o‘q va undan ortiq bo‘lgan yuk poyezdi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Harakat tarkibi gabariti qanday shartli belgi bilan nomlanadi?",
+    "answers": [
+      "T",
+      "S",
+      "Sp",
+      "S va Sp"
+    ],
+    "info": null
+  },
+  {
+    "question": "TFQga asosan yuk poyezdining indeksi nechta raqamdan iborat?",
+    "answers": [
+      "10",
+      "12",
+      "9",
+      "8"
+    ],
+    "info": null
+  },
+  {
+    "question": "Xavfsizlik – bu ....",
+    "answers": [
+      "Xavfning sodir etilmasligi",
+      "xavfning sodir etilishi",
+      "zararning potentsial manbai",
+      "Harakatlanish jadvali"
+    ],
+    "info": null
+  },
+  {
+    "question": "Inshoot va qurilmalarga texnik xizmat ko‘rsatish, ularni ta’mirlash va saqlash bo‘yicha ko‘rsatma va namunaviy texnologik jarayonlar qaysi tashkilot bilan kelishiladi?",
+    "answers": [
+      "O’ztemiryo’lnazorat",
+      "Yo‘l xo‘jaligi boshqarmasi va aloqa va signallash markazi",
+      "yo‘l xo‘jaligi boshqarmasi, aloqa va signallash markazi, elektrta’minoti markazi",
+      "MTU rahbari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yuklar (yo‘l ishlari uchun to‘kiladigan ballastdan tashqari) chekka rels kallagi tashqi chegarasidan qachon kamida 2,0 m masofada joylashtiriladi?",
+    "answers": [
+      "Yuk balandligi 1200 gacha bo’lganda",
+      "yuk balandligi 1200 mm dan ko‘p bo‘lganda",
+      "yuk balandligi 1200 mm bo‘lganda",
+      "yuk balandligi 1100 – 1200 mm gacha bo‘lganda"
+    ],
+    "info": null
+  },
+  {
+    "question": "Sariq rangli disk bilan qanday signal uzatiladi?",
+    "answers": [
+      "Cheklangan tezlikda harakatlanishga ruxsat etiladi,oldinda to’xtashni yokipasaytirilgan tezlikda o’tishni talab qiluvchi xavfli joy mavjud",
+      "to‘xtashga tayyor hamda cheklangan tezlikda va “Xavfli joyda”",
+      "xavfli joyga 100 m qoldi",
+      "xavfli joyda 100 m o‘tdi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yashil rangli disk bilan qanday signal uzatiladi?",
+    "answers": [
+      "Poyezd xavfli joydan to’liq o’tdi tezlikni oshirishga ruxsat",
+      "xavfli joyga 100 m qoldi",
+      "xavfli joyda 100 m o‘tdi",
+      "to‘xtashga tayyor hamda cheklangan tezlikda va “Xavfli joy boshi”"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yashil rangli disk harakat yo‘nalishining qaysi tomoniga qo‘yiladi?",
+    "answers": [
+      "chap",
+      "o‘ng",
+      "svetafor oldiga",
+      "stansiyaning chekka yo‘llariga"
+    ],
+    "info": null
+  },
+  {
+    "question": "To‘siq yoki ishlar olib borilayotgan joyni to‘sish uchun qanday to‘sish signali qo‘llanilad?",
+    "answers": [
+      "Ko’chma qizil signal",
+      "ko‘chma yashil signal",
+      "ko‘chma sariq signal",
+      "ko‘chma oq oy rangli signal"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlar harakati uchun stansiya yo‘llari va strelkali o‘tkazgichlardagi har qanday to‘siq poyezd (manyovr tarkibi) kutilayotgani yoki kutilmayotganidan qat’iy nazar…. signallari bilan to‘silishi kerak.",
+    "answers": [
+      "To’xtash",
+      "tezlikni kamaytirish",
+      "tezlikni oshirish",
+      "20 km/s tezlikda harakatlanish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Strelkali post navbatchisi, strelkali o‘tkazgichda to‘siq joyni payqagan bo‘lsa, .…",
+    "answers": [
+      "Zudlik bilan ko’chma qizil signalni to’siq joyida(ta’mirlash ishlarini olib borishdan oldin) o’rnatishini va bu haqida stansiya navbatchisiga xabar berishi kerak",
+      "qo‘shni post navbatchisiga habar berishi kerak",
+      "zudlik bilan ta’mirlashi kerak",
+      "tezlikni oshirish signalini berishi kerak"
+    ],
+    "info": null
+  },
+  {
+    "question": "Havfli joydan A masofada qanday belgi turishi kerak?",
+    "answers": [
+      "Kvadrat shaklidagi sariq rangli shit",
+      "kvadrat shaklidagi yashil rangli shit",
+      "kvadrat shaklidagi qizil rangli shit",
+      "kvadrat shaklidagi oq oy rangli shit"
+    ],
+    "info": null
+  },
+  {
+    "question": "To‘xtab qolgan yo‘lovchi poyezdini to‘suvchi oxirgi vagonning kuzatuvchisi qo‘l tormozlarini ishga tushirishi, poyezdning oxirgi vagonidan …. m masofada petardalarni o‘rnatishi?",
+    "answers": [
+      "800",
+      "1000",
+      "900",
+      "1100"
+    ],
+    "info": null
+  },
+  {
+    "question": "To‘xtab qolgan yo‘lovchi poyezdini to‘suvchi petardalarni qanday usulda joylashtiradi?",
+    "answers": [
+      "Shaxmat usulida har 20 m masofada mashinist tomonga 2 ta mashinist yordamchisi tomonga 1 ta",
+      "shaxmat usulida har 20 m masofada mashinist tomonga 1 ta machinist yordamchisi tomonga 2 ta",
+      "shaxmat usulida har 20 m masofada mashinist tomonga 3 ta mashinist yordamchisi tomonga 1 ta",
+      "shaxmat usulida har 20 m masofada mashinist tomonga 2 ta mashinist yordamchisi tomonga 2 ta"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lovchi poyezdlarining harakat tezligi 120 km/soat dan ortiq bo‘lgan uchastkalarda petardalarni o‘rnatish masofalarini kim belgilaydi?",
+    "answers": [
+      "DATK boshqaruvi raisi",
+      "MTUUK boshlig‘i",
+      "poyezd dispetcheri",
+      "poyezd mashinisti"
+    ],
+    "info": null
+  },
+  {
+    "question": "Avtomatik blokirovka bilan jihozlangan liniyalarda bir vaqtning o‘zida nechta poyezd harakatlanishi mumkin?",
+    "answers": [
+      "Bir nechta",
+      "bittadan uchtagacha",
+      "ikkita",
+      "faqat bitta"
+    ],
+    "info": null
+  },
+  {
+    "question": "Markazlashtirilgan dispetcherlik uchastkalarida poyezdlar stansiyaga kimning ruxsati bilan qabul qilinadi?",
+    "answers": [
+      "Poyezd dispetcheri",
+      "stansiya navbatchisi",
+      "stansiya signalchisi",
+      "blok-post navbatchisi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Avtostopning vazifasi bu –",
+    "answers": [
+      "Poyezdni yopiq svetofor oldida Avtomat tarzda to’xtatish",
+      "poyezdni chirogi ochgan svetofor oldida avtomat tarzda to‘xtatish",
+      "poyezdni baxtsiz hodisa sodir bo‘lganda avtomat tarzda to‘xtatish",
+      "Poyezd tarkibidagi vagon(lar)da yong‘in chiqqanda zudlik bilan poyezdni to‘xtatish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Strelkali o‘tkazgich qulfi qayerda saqlanadi?",
+    "answers": [
+      "Stansiya navbatchisi xonasida yoki stansiyaning texnikaviy-boshqaruv dalolatnomasiga binoan boshqa xodimda",
+      "Strelkali post navbatchisi xonasida",
+      "Stansiya muhandislari xonasida",
+      "Yo‘l xo‘jaligi xodimlari xonasida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tungi tekshiruv o‘tkazilgan vaqti va uning maqsadi to‘g‘risida qayerga xabar beriladi?",
+    "answers": [
+      "Texnik va texnologik nazorat boshqarmasiga",
+      "“O‘ztemiryo‘lnazorat” inspeksiyasiga",
+      "MTUUK statistika bo‘limiga",
+      "“O‘TY” AJ va MTUUK xodimlar bo‘limiga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Odamlar bilan band bo‘lgan vagonlar harakatida tezlik qancha bo‘lishi kerak?",
+    "answers": [
+      "15 km\\soat",
+      "25 km/soat",
+      "5 km/soat",
+      "40 km/soat"
+    ],
+    "info": null
+  },
+  {
+    "question": "Vagonlari orqada va lokomotiv oldinda bo‘lgandagi bo‘sh yo‘llar bo‘yicha harakatlanish tezligi qancha bo‘lishi kerak?",
+    "answers": [
+      "40 km\\soat",
+      "60 km/soat",
+      "25 km/soat",
+      "15 km/soat"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyada manyovr ishlari tezliklari ketma-ketligini kamayish tartibi belgilang?",
+    "answers": [
+      "60.40.25.15.5.3",
+      "3, 5, 15, 25, 40, 60",
+      "3, 15, 5, 25, 40, 60",
+      "60, 40, 25, 5, 15, 3"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manyovr svetaforlarining ko‘rsatkichlari qanday rangda bo‘ladi?",
+    "answers": [
+      "Oq-oy va ko’k",
+      "oq, yashil",
+      "qizil, sariq",
+      "qizil, ko‘k"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manyovr ishlaridagi ko‘rsatmalarni uzatishdagi asosiy vosita bu –",
+    "answers": [
+      "radioaloqa",
+      "ikki tomonlama park aloqasi",
+      "qo‘l signallari",
+      "manyovr svetaforlari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ko‘p yo‘llik liniyalarda oraliq stansiyalarining hizmatlari nimalarga bog‘liq?",
+    "answers": [
+      "Bosh yo’llar soniga",
+      "yo‘llarning ixtisoslanishiga",
+      "qabul-jo‘natish yo‘llari soniga",
+      "poyezdlar soniga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezddagi tormozlarda nosozlik bo'lsa, mashinist yoki mashinist yordamchisi kimni xabardor qilishi kerak:",
+    "answers": [
+      "Dispecher yoki stansiya navbatchisiga",
+      "МТU",
+      "ECh",
+      "ShCh"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiya navbarchisining ruxsatisiz poyezning peregonga chiqishi ruxsat etilganmi:?",
+    "answers": [
+      "Ruxsat etilmaydi",
+      "har doim emas",
+      "ha",
+      "Kim qanday xoxlasa"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiya navbatchisining vazifasiga nimalar kiradi:",
+    "answers": [
+      "Temir yoʻl bekat navbatchisi (stansiya navbatchisi) bekat hududida poyezdlar harakati xavfsizligini ta’minlovchi va harakatni boshqaruvchi asosiy shaxs hisoblanadi. U o‘z smenasida bekatdagi barcha poyezdlar va manevr ishlarini bevosita boshqaradi.",
+      "Mаshinistgа xujjаtlаrni berish",
+      "poyezd natur varog’ini to'ldirish",
+      "Mаnevr ishlаrini bаjаrish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi svetoforlar poyezdni bir blok-uchastkadan ikkinchisiga o’tishiga ruxsat beradi yoki taqiqlaydi:",
+    "answers": [
+      "O’tish",
+      "Marshrut",
+      "Kirish",
+      "Chiqish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Petardani portlashi nimani anglatadi",
+    "answers": [
+      "Poyezdni zudlik bilan to’xtatishni",
+      "Belgilangan tezlik bilan o’tishni talab etiladi",
+      "Kam tezlikda davom ettirishni talab qiladi",
+      "Ogohlantirishni talab qiladi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Xavfli joy chegarasidan \"xavfli joyning boshlanishi\" va \"xavfli joyning oxiri\" ogohlantiruvchi belgilar qaysi masofalardao’rnatiladi",
+    "answers": [
+      "50m",
+      "100 m",
+      "300 m",
+      "Xavfli joy chegarasida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Strelkali o’tkazgichning asosiy qismlari nimalardan iborat?",
+    "answers": [
+      "Strelka,bog’lovchi va krestovina",
+      "Strelka, Krestovina qismi",
+      "Krestovina qismi, bog’lovchi qism,",
+      "Krestovina, o’tkazish mexanizmi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Oraliq stantsiyalarda poyezdlar va lokomotivlar harakatini qayd etish jurnali qaysi?",
+    "answers": [
+      "DU-2",
+      "DU-3",
+      "DU-54",
+      "DU-55"
+    ],
+    "info": null
+  },
+  {
+    "question": "DU-46 hujjati bu…",
+    "answers": [
+      "Yo’l ,strelka o’tkazgichlari,SMB va aloqa qurilmalari va kontakt tarmoqlarini nazorat qilish jurnali",
+      "poyezdlar telefonogrammasi jurnali",
+      "Poyezdlar va lokomativlar harakati jurnali",
+      "strelkali о‘tkazgich jurnali"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaga 4 ta yo'nalish mavjud bo'lsa, nechta poyezdlar telefonogrammasi jurnali tutiladi?",
+    "answers": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo'llarda poyezdlar va manyovrlar bo'yicha harakat xavfsizligini buzilishi quyidagicha tavsiflanadi:",
+    "answers": [
+      "Hamma javob to’g’ri",
+      "avariya, ishdagi brak xolati",
+      "Poyezdlar xalokati",
+      "ishdagi brak aloxida xolati,"
+    ],
+    "info": null
+  },
+  {
+    "question": "O’TY AJda haftaning qaysi kuni \"Xavfsizlik kuni”",
+    "answers": [
+      "chorshanba",
+      "Dushanba",
+      "Payshanba",
+      "Seshanba"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manyovr svetoforining manyovr tarkibiga o’tishga ruxsat beruvchi signali",
+    "answers": [
+      "Bitta oq chiroq",
+      "Bitta ko'k chiroq",
+      "Bitta sariq chiroq",
+      "Bitta qizil chiroq"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manyovr tarkibga manyovr svetoforini o’tishga ta’qiqlovchi signali?",
+    "answers": [
+      "Bitta ko’k",
+      "Bir oy-oq chiroq",
+      "Bitta sariq chiroq",
+      "Bitta qizil chiroq"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tepalik svetoforlari orqali yuborilgan \"Bir sariq chiroq\" signali…",
+    "answers": [
+      "Vagonlarni kamaytirilgan tezlikda tushirishga ruxsat",
+      "Vagonlarni belgilangan tezlikda tushirishga ruxsat etiladi",
+      "To`xta! tushirish ta`qiqlanadi",
+      "Туширишга рухсат беради"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poezdlarni qabul qilish xavfsizligini ta'minlash uchun stansiya navbatchisi quyidagilarga amal qilishi shart:",
+    "answers": [
+      "Qabul qilish yo’larining bo’shligini tekshirish,strelkalar tog’ri yo’nalishda o’rnatilganini tekshirish va marshrut ochish",
+      "yo‘llarni ketayotgan poezdlar bilan band etmaslik ketma-ketligini oldindan rejalashtirish va shunga muvofiq ravishda har bir poezdni tayyorlash",
+      "qabul qilish-jo‘natish yo‘llari holati (bandligi) hisobini yuritmaslik",
+      "qabul qilish yo‘llari holati (bandligi) hisobini yuritishlik"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poeyzdlar harakatini telefon aloqasida tashkil qilishda ishlatiladigan jurnalga qaysi lurnal kiradi?",
+    "answers": [
+      "DU-47",
+      "DU-50",
+      "DU-60",
+      "DU-53"
+    ],
+    "info": null
+  },
+  {
+    "question": "Poyezdlаr hаrаkаti telefon aloqasida o‘rnatilganda, mashunistga qaysi raqamli hujjat rasmiylashtiriladi?",
+    "answers": [
+      "DU-50",
+      "DU-61",
+      "DU-52",
+      "DU-64"
+    ],
+    "info": null
+  },
+  {
+    "question": "Berk peregonga poyezdni yuborish uchun qanday ruxsatnoma berilishi lozim?",
+    "answers": [
+      "DU-64",
+      "DU-50",
+      "DU-61",
+      "DU-52."
+    ],
+    "info": null
+  },
+  {
+    "question": "Yarimavtoblokirovka tizimida o‘tish svetaforlari qayerlarga o‘rnatiladi?",
+    "answers": [
+      "Postlararo peregonlarning chegaralarida",
+      "Peregonlarga, bir nechta blok uchastkaga bo‘lish uchun",
+      "Yarim avtoblokirovka tizimida o‘tish svetaforlaridan foydalanmaydi",
+      "Stansiya chegarasiga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Suruvchi lokomotivlar peregonning ma’lum masofasidan ortga qaytsa ularni peregonga yuborish tartibi qanday?",
+    "answers": [
+      "Jezl-kalit beriladi,agar nosoz bolsa telefon aloqaga o’tib DU-50 yo’l xati beriladi",
+      "Suruvchi lokomotivga DU-52 berib yuboriladi",
+      "Suruvchi lokomotivga DU-54 berib yuboriladi",
+      "Suruvchi lokomotivga DU-56 berib yuboriladi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘l xo‘jaligining asosiy vazifasi nimalardan iborat?",
+    "answers": [
+      "Yo’llarning doimiy harakatga shay holatini ta’minlash",
+      "lokomotivlarni ta’mirlash",
+      "vagonlarni ta’mirlash",
+      "g‘ildirak juftlarini ko‘rikdan o‘tkazish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Avtonom (mustaqil harakatlanuvchi) lokomotivlarning turlari?",
+    "answers": [
+      "Paravozlar,teplovoz gazoturbavoz",
+      "teplovozlar",
+      "parovozlar",
+      "elektrovozlar va motorli vagonlar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Vagon xo‘jaligining asosiy qurilmasi nima?",
+    "answers": [
+      "Vagon deposi",
+      "lokomotiv deposi",
+      "yuk hovlisi",
+      "yo‘lovchi binosi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyalarida vagon torozisi qayerda joylashadi?",
+    "answers": [
+      "Yuk hovlisida",
+      "saralash parkida",
+      "qabul-jo‘natish parki yonida",
+      "lokomotiv deposida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyaining ko‘ndalang turida o‘tish yo‘li nima uchun xizmat qiladi?",
+    "answers": [
+      "Poyezd va manyovr lokomotivlarni o’tkazish uchun",
+      "vagonlarni yig‘ish uchun",
+      "poyezdlarni qabul- jo‘natish uchun",
+      "poyezdlarni to‘xtovsiz o‘tkazish uchun"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyalarida poyezdlarni tarqatish uchun tortish yo‘li qanday uzunlikda loyihalanadi?",
+    "answers": [
+      "Tarqatiluvchi poyezdlar uzunligiga qarab",
+      "1050 m",
+      "850 m",
+      "yuk poyezdi uzunligiga qarab"
+    ],
+    "info": null
+  },
+  {
+    "question": "Xavfli yukli vagonlarni to‘plash uchun mo‘ljallangan yo‘l qayerda joylashadi?",
+    "answers": [
+      "Saralash parkini eng oxirgi yo’lida",
+      "yuk xo‘jaligida",
+      "qabul-jo‘natish yo‘llarida",
+      "lokomotivlar xo‘jaligida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ko‘p yo‘llik liniyalarda oraliq stansiyalarining hizmatlari nimalarga bog‘liq?",
+    "answers": [
+      "bosh yo’llar soniga",
+      "yo‘llarning ixtisoslanishiga",
+      "qabul-jo‘natish yo‘llari soniga",
+      "poyezdlar soniga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Konteyner maydonining uzunligini qanday qilib kamaytirish mumkin",
+    "answers": [
+      "Kengligi katta bo’lgan kranlarni qo’llash",
+      "kengligi kichik bo‘lgan kranlarni qo‘llash",
+      "vagonlarni stansiyadan konteyner maydoniga berish sonini ko‘paytirish",
+      "vagonlarni konteyner maydoniga berish sonini kamaytirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l transportida eng past yo‘lovchi platformasi yo‘l o‘qiga nisbatan qancha uzoqlikda joylashadi?",
+    "answers": [
+      "1745mm",
+      "1700 mm",
+      "1650 mm",
+      "1600 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l transportida eng baland yo‘lovchi platformasi yo‘l o‘qiga nisbatan qancha uzoqlikda joylashadi?",
+    "answers": [
+      "1920mm",
+      "1900 mm",
+      "1800 mm",
+      "1820 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Normal sharoitlarda machtali svetoforlar va kontakt tarmoqlarining tayanchlari yo‘l o‘qidan qancha masofada o‘rnatiladi?",
+    "answers": [
+      "3100mm",
+      "3050 mm",
+      "3000 mm",
+      "3150 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qiyin sharoitlarda machtali svetoforlar stansiyalarda yo‘l o‘qidan qancha masofada o‘rnatishga ruxsat etiladi?",
+    "answers": [
+      "2450mm",
+      "2400 mm",
+      "2350 mm",
+      "2300 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qiyin sharoitlarda machtali svetoforlar peregonlarda yo‘l o‘qidan qancha masofada o‘rnatishga ruxsat etiladi?",
+    "answers": [
+      "2750mm",
+      "2650 mm",
+      "2700 mm",
+      "2600 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Hozirgi kunda harakat tarkibi gabaritining necha turi mavjud?",
+    "answers": [
+      "8",
+      "7",
+      "6",
+      "9"
+    ],
+    "info": null
+  },
+  {
+    "question": "Harakat tarkibi gabariti necha guruhga bo‘linadi?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yuklari vagondan vagonga to‘g‘ridan to‘g‘ri o‘tkazilishi ko‘zda tutilgan stansiyaning yon yo‘l o‘qlari orasidagi masofa qancha etib loyihalanadi?",
+    "answers": [
+      "3600mm",
+      "3500 mm",
+      "3700 mm",
+      "3750 mm"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quyidagilardan qaysi biri ortish gabariti turiga mansub emas?",
+    "answers": [
+      "marshrutli",
+      "imtiyozli",
+      "umumtarmoq",
+      "zonalashgan"
+    ],
+    "info": null
+  },
+  {
+    "question": "Maxsus vazifali yo‘l tarmoqlariga qaysi yo‘llar mansub?",
+    "answers": [
+      "Ehtiyot va tutib qoluvchi berk yo’llar, korxonalarga olib boruvchi shahobcha yo’llar",
+      "qabul-jo‘natish yo‘llari",
+      "bosh yo‘l",
+      "ortish-tushirish yo‘llari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiya yo‘llariga qaysi yo‘llar mansub emas?",
+    "answers": [
+      "Ehtiyot va tutib qoluvchi berk yo’llar, korxonalarga olib boruvchi shahobcha yo’llari",
+      "qabul-jo‘natish yo‘llari",
+      "saralash yo‘llari",
+      "ortish-tushirish yo‘llari"
+    ],
+    "info": null
+  },
+  {
+    "question": "Foydali uzunligi 850 metrli bo‘lgan oraliq stansiyaning qanday turini qurush mumkin 1450 metr uzunlikdagi maydonga.",
+    "answers": [
+      "Ko’ndalang",
+      "yarim bo‘ylama turdagi",
+      "bo‘ylama turdagi",
+      "ajratilgan maydonga oraliq stansiya qurib bo‘lmaydi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ajratish punktlarida yo‘lovchi binolari yo‘l o‘qiga nisbatan qancha uzoqlikda loyihalanadi?",
+    "answers": [
+      "20m",
+      "22 m",
+      "21 m",
+      "23 m"
+    ],
+    "info": null
+  },
+  {
+    "question": "Tez yurar yo‘lovchi poyezdlari xarakatlanadigan uchastkalarda yo‘lovchi binolari yo‘l o‘qiga nisbatan qancha uzoqlikda loyihalanadi?",
+    "answers": [
+      "25m",
+      "24 m",
+      "23 m",
+      "26 m"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qanday xollarda stansiyalarga aholi uchun yer osti yo‘lagi yoki yo‘lovchi ko‘priklari loyihalanadi?",
+    "answers": [
+      "agar stansiyada 8 va undan ortiq yo‘llar mavjud bo‘lsa",
+      "agar stansiyada 6 va undan ortiq yo‘llar mavjud bo‘lsa",
+      "agar stansiyada 7 va undan ortiq yo‘llar mavjud bo‘lsa",
+      "agar stansiyada 5 va undan ortiq yo‘llar mavjud bo‘lsa"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaning 2 darajali yo‘llariga qaysi yo‘llar mansub emas?",
+    "answers": [
+      "Qabul qilish jo’natish",
+      "tortish yo‘llari",
+      "ortish-tushirish yo‘llari",
+      "lokomotiv xo‘jaligi olib boruvchi yo‘llar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash tepaligining quvvatini aniqlash nimalarga bog‘liq?",
+    "answers": [
+      "stansiyada qayta ishlanuvchi VAGONlar soniga",
+      "stansiyada qayta ishlanuvchi poyezdlar soniga",
+      "stansiyada qayta ishlanadigan yuklar miqdoriga",
+      "hech narsaga bog‘liq emas"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaga kirish svetoforining o‘rnatishning necha xolati mavjud?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaga chiqish svetoforining o‘rnatishning necha xolati mavjud?",
+    "answers": [
+      "3",
+      "2",
+      "4",
+      "5"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyasi qanday poyezdlarni qayta ishlamaydi?",
+    "answers": [
+      "tranzit",
+      "terma",
+      "uzatma",
+      "uchastka"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyalariga saralash tepaliklari loyihalanadimi?",
+    "answers": [
+      "Xa,kichik quvvatli",
+      "xa, o‘rta quvvatli",
+      "xa, katta quvvatli",
+      "yo‘q"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xollarda uchastka stansiyalariga saralash tepaligi loyihalanadi?",
+    "answers": [
+      "1 sutkada qayta ishlanadigan vagonlar soni 250 ta bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 200 ta bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 150 ta bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 300 ta bo‘lganida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xollarda saralash stansiyalariga kichik quvvatli saralash tepaligi loyihalanadi?",
+    "answers": [
+      "1 sutkada qayta ishlanadigan vagonlar soni 250 tadan 1500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 200 tadan 1500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 150 tadan 1500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 300 tadan 1500 tagacha bo‘lganida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xollarda saralash stansiyalariga o‘rta quvvatli saralash tepaligi loyihalanadi?",
+    "answers": [
+      "1 sutkada qayta ishlanadigan vagonlar soni 1500 tadan 3500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 1400 tadan 3000 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 1300 tadan 3000 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 1600 tadan 3000 tagacha bo‘lganida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyalarida qayta ishlanmaydigan tranzit poyezdlari qaysi parkga qabul qilinadi?",
+    "answers": [
+      "tranzit parkiga",
+      "qabul parkiga",
+      "jo‘nash parkiga",
+      "saralash parkiga"
+    ],
+    "info": null
+  },
+  {
+    "question": "Manyovr svetofori qanday ranglardan tarkib topgan?",
+    "answers": [
+      "Oq va ko’k",
+      "qizil, yashil",
+      "sariq, yashil",
+      "oq, yashil"
+    ],
+    "info": null
+  },
+  {
+    "question": "Krestovinaning bo‘g‘zi qayerda joylashgan?",
+    "answers": [
+      "Usoviklar orasidagi eng tor joy",
+      "krestovinaning ishchi qirralari kesishgan joyda",
+      "ikki yo‘l o‘qlari kesishgan joyda",
+      "usavikdan konturrelsgacha bo‘lgan oraliqda"
+    ],
+    "info": null
+  },
+  {
+    "question": "Krestovinaning xavfli xududi qayerda joylashgan?",
+    "answers": [
+      "Usovikning eng tor qismidan matematik markazgacha bo’lgan oralig’i",
+      "ikki yo‘l o‘qlari kesishgan joyda",
+      "krestovinaning ishchi qirralari kesishgan joyda",
+      "usaviklarning eng tor qismida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Krestovinaning matematik markazi qayerda joylashgan?",
+    "answers": [
+      "Kristovina o’zagi ishchi qirralarining davomining o’zaro kesishgan nuqtasi",
+      "ikki yo‘l o‘qlari kesishgan joyda",
+      "usaviklarning eng tor qismidan matematik markazgacha bo‘lgan oraliqda",
+      "usaviklarning eng tor qismida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xollarda saralash stansiyalariga katta quvvatli saralash tepaligi loyihalanadi?",
+    "answers": [
+      "1 sutkada qayta ishlanadigan vagonlar soni 3500 tadan 5500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 3200 tadan 5500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 3400 tadan 5500 tagacha bo‘lganida",
+      "1 sutkada qayta ishlanadigan vagonlar soni 3000 tadan 5500 tagacha bo‘lganida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash tepaligining hisobiy nuqtasi qayerda joylashgan?",
+    "answers": [
+      "oxirgi tormozlash pozitsiyasidan 50 metr uzoqlikda",
+      "oxirgi tormozlash pozitsiyasidan 75 metr uzoqlikda",
+      "oxirgi tormozlash pozitsiyasidan 80 metr uzoqlikda",
+      "oxirgi tormozlash pozitsiyasidan 25 metr uzoqlikda"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qaysi xollarda ikki yo‘l o‘qlari orasidagi masofa 4,1m ga teng bo‘ladi?",
+    "answers": [
+      "Peregonlardagi yo’llarda",
+      "qabul-jo‘nash yo‘llarida",
+      "ortish-tushurish yo‘llarida",
+      "shoxobcha yo‘llarida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyalarda yon yo‘nalishning kelib qo‘shilishi qanday asosda tanlanadi?",
+    "answers": [
+      "Burchak vagon oqimining minimum bo’yicha",
+      "harakat xavfsiiligi bo‘yicha",
+      "mahalliy vagonlar oqimining minimumi bo‘yicha",
+      "maksimal harakat tezligi bo‘yicha"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uchastka stansiyalarda saralash parkining bajaradigan vazifasi nimalardan iborat?",
+    "answers": [
+      "Tarkibni yig’ish va tarqatish",
+      "vagonlarni to‘plash, yig‘ish uchun",
+      "poyezd va uzatma tarkiblarni tarqatish, to‘plash va tuzish uchun",
+      "vagonlarni saqlash uchun"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyalarning strelkali bo‘g‘izlarini loyihalashda qanday asosiy talablar ta’minlanishi kerak?",
+    "answers": [
+      "Harakat xavfsizligi",
+      "ihchamligi",
+      "poyezdlar qabulidagi parallellik",
+      "tejamkorlik"
+    ],
+    "info": null
+  },
+  {
+    "question": "Temir yo‘l uzellari qanday farqlanadi?",
+    "answers": [
+      "Barcha javoblar to’g’ri",
+      "vagonlar oqimining harakatlanishiga qarab",
+      "stantsiyalar joylanishiga qarab",
+      "yo‘nalishlar soniga qarab"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyasida qayta ishlanuvchi poyezdlar bilan qanday ishlar bajariladi?",
+    "answers": [
+      "Tarkib tarqatilib,yangi poyezdlar tuziladi,tarkib texnik va tijoriy ko’rikdan o’tkaziladi,poyezdlar qabuli va yangilarni jo’natish(barcha javoblar to’g’ri)",
+      "tarkib tarqatilib yangi poyezdlar tuziladi",
+      "tarkib texnik va tijorat ko‘rigidan o‘tkaziladi",
+      "poyezdlar qabuli va yangilarini jo‘natish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Stansiyaning qayta ishlash qobiliyatini qanday oshirish mumkin?",
+    "answers": [
+      "Tashkiliy va texnik tadbirlar bilan",
+      "tashkiliy tadbirlar bilan",
+      "yo‘llar sonini ko‘paytirib",
+      "texnik tadbirlar bilan"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyalarda yon yo‘nalishlarning qo‘shilishi qanday asosda tanlanadi?",
+    "answers": [
+      "Tranzit burchak minimumi hisobida",
+      "maksimal harakat tezligi bo‘yicha",
+      "harakat xavfsizligi bo‘yicha",
+      "burchak osti yo‘nalish vagonlar oqimining minimumi bo‘yicha"
+    ],
+    "info": null
+  },
+  {
+    "question": "Uzelli va uzelsiz stansiyalarning farqi nimada?",
+    "answers": [
+      "Stansiyaga tutashuvchi yo’nalishlar sonida",
+      "lokomotiv deposining mavjudligida",
+      "yuk hovlisining borligida",
+      "yo‘lovchi binosining joylashuvida"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyalardan yo‘lovchi poyezdlari o‘tkaziladimi?",
+    "answers": [
+      "Harakat mavjudligiga qarab ayrim hollarda",
+      "barcha stansiyalar o‘tkazadi",
+      "yo‘q",
+      "ayrimlari shaharatrof poyezdlarini o‘tkazadi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lning ustki qurilmasi nimalardan tashkil topgan?",
+    "answers": [
+      "*Rels, shpal, ballast qatlami",
+      "Rels, elektr tarmog‘i, kyuvet",
+      "Rels, shpal, vagon, ballast qatlami",
+      "Ballast qatlami, kyuvet"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lning ustki qurilmasiga nimalar kirmaydi?",
+    "answers": [
+      "Elektr o’tgazgich liniyalar",
+      "Shpalalar",
+      "Relslar",
+      "Sheben (сhaqiq tosh)"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lning osti qurilmasiga nimalar kiradi?",
+    "answers": [
+      "yer polotnosi",
+      "Ballast qatlami, shpallar",
+      "To‘kma, relslar",
+      "Strelkali o‘tkazgichlar, shpallar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Sun’iy inshootlarga nimalar kiradi?",
+    "answers": [
+      "Ko’prik,tonnel va boshqa",
+      "Strelkali o‘tkazgichlar, shpallar",
+      "Strelkali o‘tkazgich",
+      "Yer polotnosi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Relsning standart uzunligi necha metr?",
+    "answers": [
+      "25m",
+      "6,25m, 4,5m",
+      "12,5m, 6,25m, 4,5m",
+      "25m, 50m"
+    ],
+    "info": null
+  },
+  {
+    "question": "Rels rusmlari nimalarni bildiradi?",
+    "answers": [
+      "1m rels uzunligini kg mini bildiradi",
+      "Poyezdning muvozanatini",
+      "Poyezdning og‘irligini",
+      "Poyezdning ulanish qismini bildiradi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Razyedlar qanday uchastkalarda quriladi?",
+    "answers": [
+      "Bir yo'llik",
+      "Ko‘p yo‘llik",
+      "Ikki yo‘llik",
+      "To‘rt yo‘llik"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quyidagilardan qaysi biri ajratish punktiga kirmaydi?",
+    "answers": [
+      "Pereezdlar",
+      "Quvib o‘tish punktlari",
+      "Stansiyalar",
+      "Raz'yezdlar"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ajratish punktiga nimalar kiradi?",
+    "answers": [
+      "Quvib o’tish punktlari,razyezdlar,stansiyalar,o’tish svetoforlari",
+      "Yuk hovlisi, razyezdlar",
+      "Vagon deposi, yo‘lovchi platformasi",
+      "Lokomotiv deposi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Saralash stansiyasining asosiy vazifasi nimalardan iborat?",
+    "answers": [
+      "Poyezd va vagonlarni saralash",
+      "poezdlarni o‘tkazib yuborish",
+      "poyezd lokomotivlarini almashtirish;",
+      "vagonlarni ta’mirlash."
+    ],
+    "info": null
+  },
+  {
+    "question": "Razyezdning qaysi turlarini bilasiz?",
+    "answers": [
+      "Bo’ylama,yarim bo’ylama va ko’ndalang",
+      "Bir yo‘llik, ikki yo‘llik, ko‘p yo‘llik",
+      "Yarim bo‘ylama, bir yo‘llik, vertikal",
+      "Bo‘ylama, ikki yo‘llik, gorizontal"
+    ],
+    "info": null
+  },
+  {
+    "question": "Yo‘lovchi stansiyalarda qaysi operatsiyalar bajarilmaydi?",
+    "answers": [
+      "Yuk operatsiyalari bajarilmaydi",
+      "Yo‘lovchilarni tushirish va chiqarish",
+      "Bagajni qabul qilish va berish",
+      "Yo‘lovchi poyezdlarni qabul qilish va jo‘natish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quvib o‘tish yo‘llarida qanday ishlar bajariladi?",
+    "answers": [
+      "Bir yo’nalishda kelayotgan poyezdlarni o’zaro quvib o’tishini ta’minlaydi",
+      "Vagonlarni saralash",
+      "Lokomotivlarni almashtirish",
+      "Poyezdlarni kesishtirish"
+    ],
+    "info": null
+  },
+  {
+    "question": "O‘zib o‘tish punkti, bu…..",
+    "answers": [
+      "Ikki yo’llik liniyalarda ajratish punkti",
+      "Uch yo‘llik liniyalarda ajratish punkti",
+      "Bir yo‘llik liniyalarda ajratish punkti",
+      "Ko‘p yo‘llik liniyalarda ajratish punkti"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ajratish punktining vazifalari",
+    "answers": [
+      "Poyezd o’tkazish qobiliyatini oshirish,harakat xavfsizligini ta’minlash,",
+      "Poyezdlarni qabul qilish va jo‘natish.",
+      "Yuklarni ortish va tushirish",
+      "Yo‘lovchilarga xizmat ko‘rsatish"
+    ],
+    "info": null
+  },
+  {
+    "question": "Quvib o‘tish punktining qaysi turlarini bilasiz?",
+    "answers": [
+      "Bo’ylama,yarim bo’ylama va ko’ndalang",
+      "Bir yo‘llik, ikki yo‘llik, qo‘p yo‘llik",
+      "Yarim bo‘ylama, bir yo‘llik, vertikal",
+      "Bo‘ylama, ikki yo‘llik, gorizontal"
+    ],
+    "info": null
+  },
+  {
+    "question": "Qiyin sharoitlarda razyezd va o‘zib utish punktlarini qanday maksimal nishablikda joylashtirish mumkin emas?",
+    "answers": [
+      "2.5 ‰",
+      "1,5‰",
+      "5‰",
+      "12‰"
+    ],
+    "info": null
+  },
+  {
+    "question": "Kam harakatli bir yo‘llik liniyada qanday turdagi oraliq stansiya tavsiya etiladi?",
+    "answers": [
+      "Ko’ndalang",
+      "Bo‘ylama turdagi",
+      "Yarim bo‘ylama turdagi",
+      "Kombinirlashgan turdagi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Ikki yo‘llik liniyada qanday turdagi oraliq stansiya tavsiya etiladi?",
+    "answers": [
+      "Ko’ndalang",
+      "Yarim bo‘ylama turdagi",
+      "Bo‘ylama turdagi",
+      "Kombinirlashgan turdagi"
+    ],
+    "info": null
+  },
+  {
+    "question": "Bo‘ylama turdagi oraliq stansiyasining boshqa turlariga nisbatan afzalliklari qanday?",
+    "answers": [
+      "Sanab o’tilganlarni barchasi",
+      "Harakat xavfsizligi yaxshiroq ta’minlanash",
+      "Qo‘shma poyezdlar kesishuvini ta’minlash",
+      "Katta o‘tkazish qobiliyati"
+    ],
+    "info": null
+  }
+]

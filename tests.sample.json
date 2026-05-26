@@ -1,0 +1,10 @@
+[
+  {
+    "question": "Python dasturlash tilida ro'yxat qaysi belgi bilan yoziladi?",
+    "answers": ["[]", "{}", "()", "<>"]
+  },
+  {
+    "question": "2 + 2 nechaga teng?",
+    "answers": ["4", "3", "5", "22"]
+  }
+]
