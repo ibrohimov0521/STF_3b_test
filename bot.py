@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from database import (
     AnswerOption,
     Question,
+    QuizAnswer,
     QuizAttempt,
     User,
     get_session,
@@ -29,6 +30,15 @@ DEFAULT_TEST_FILE = Path("tests_2025_26.json")
 
 
 @dataclass
+class AnswerRecord:
+    question_id: int
+    selected_option_id: int
+    correct_option_id: int
+    is_correct: bool
+    answered_at: datetime
+
+
+@dataclass
 class QuizState:
     question_ids: list[int]
     current_index: int = 0
@@ -36,6 +46,7 @@ class QuizState:
     wrong_count: int = 0
     answered: bool = False
     started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    answers: list[AnswerRecord] = field(default_factory=list)
 
 
 active_quizzes: dict[int, QuizState] = {}
@@ -63,11 +74,18 @@ def quiz_size_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def answer_keyboard(options: list[AnswerOption]) -> InlineKeyboardMarkup:
+def answer_keyboard(question_id: int, options: list[AnswerOption]) -> InlineKeyboardMarkup:
     letters = ["A", "B", "C", "D"]
     rows = []
     for letter, option in zip(letters, options):
-        rows.append([InlineKeyboardButton(text=letter, callback_data=f"answer:{option.id}")])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=letter,
+                    callback_data=f"answer:{question_id}:{option.id}",
+                )
+            ]
+        )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
@@ -133,7 +151,7 @@ async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
         f"{variants}"
     )
     state.answered = False
-    await bot.send_message(chat_id, text, reply_markup=answer_keyboard(options))
+    await bot.send_message(chat_id, text, reply_markup=answer_keyboard(question_id, options))
 
 
 async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
@@ -153,16 +171,27 @@ async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
         db_user.total_correct += state.correct_count
         db_user.total_wrong += state.wrong_count
         db_user.last_seen_at = finished_at
-        session.add(
-            QuizAttempt(
-                user_id=db_user.id,
-                question_count=total,
-                correct_count=state.correct_count,
-                wrong_count=state.wrong_count,
-                started_at=state.started_at,
-                finished_at=finished_at,
-            )
+        attempt = QuizAttempt(
+            user_id=db_user.id,
+            question_count=total,
+            correct_count=state.correct_count,
+            wrong_count=state.wrong_count,
+            started_at=state.started_at,
+            finished_at=finished_at,
         )
+        session.add(attempt)
+        session.flush()
+        for answer in state.answers:
+            session.add(
+                QuizAnswer(
+                    attempt_id=attempt.id,
+                    question_id=answer.question_id,
+                    selected_option_id=answer.selected_option_id,
+                    correct_option_id=answer.correct_option_id,
+                    is_correct=answer.is_correct,
+                    answered_at=answer.answered_at,
+                )
+            )
         session.commit()
 
     await bot.send_message(
@@ -242,9 +271,19 @@ async def on_answer(callback: CallbackQuery) -> None:
         await callback.answer("Bu savolga javob berib bo'lgansiz.", show_alert=True)
         return
 
-    selected_id = int(callback.data.split(":")[1])
+    _, question_id_raw, selected_id_raw = callback.data.split(":")
+    question_id = int(question_id_raw)
+    selected_id = int(selected_id_raw)
+    current_question_id = state.question_ids[state.current_index]
+    if question_id != current_question_id:
+        await callback.answer("Bu eski savol tugmasi. Joriy savolga javob bering.", show_alert=True)
+        return
+
     with get_session() as session:
         selected = session.get(AnswerOption, selected_id)
+        if selected is None or selected.question_id != question_id:
+            await callback.answer("Javob varianti topilmadi.", show_alert=True)
+            return
         question = session.get(Question, selected.question_id)
         correct = (
             session.query(AnswerOption)
@@ -263,6 +302,15 @@ async def on_answer(callback: CallbackQuery) -> None:
     if question.info:
         result = f"{result}\n\nInfo: {question.info}"
 
+    state.answers.append(
+        AnswerRecord(
+            question_id=question.id,
+            selected_option_id=selected.id,
+            correct_option_id=correct.id,
+            is_correct=selected.is_correct,
+            answered_at=datetime.now(timezone.utc),
+        )
+    )
     state.current_index += 1
     is_finished = state.current_index >= len(state.question_ids)
     await callback.message.edit_reply_markup(reply_markup=None)
