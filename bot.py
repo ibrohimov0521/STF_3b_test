@@ -4,6 +4,7 @@ import os
 import random
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from pathlib import Path
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
@@ -18,11 +19,13 @@ from database import (
     get_session,
     init_db,
 )
+from import_tests import import_tests
 
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+DEFAULT_TEST_FILE = Path("tests_2025_26.json")
 
 
 @dataclass
@@ -96,6 +99,17 @@ async def get_random_question_ids(limit: int) -> list[int]:
         ids = [row[0] for row in session.query(Question.id).all()]
     random.shuffle(ids)
     return ids[:limit]
+
+
+def seed_tests_if_empty() -> None:
+    with get_session() as session:
+        question_count = session.query(Question).count()
+
+    if question_count > 0 or not DEFAULT_TEST_FILE.exists():
+        return
+
+    imported_count = import_tests(DEFAULT_TEST_FILE, replace=False)
+    logger.info("Seeded %s tests from %s", imported_count, DEFAULT_TEST_FILE)
 
 
 async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
@@ -278,6 +292,7 @@ async def main() -> None:
         raise RuntimeError("BOT_TOKEN environment variable is required")
 
     init_db()
+    seed_tests_if_empty()
 
     bot = Bot(token=token)
     dp = Dispatcher()
