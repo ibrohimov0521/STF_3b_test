@@ -9,15 +9,36 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship,
 load_dotenv()
 
 
+def raw_database_url() -> str:
+    database_url = os.getenv("DATABASE_URL")
+    mysql_url = os.getenv("MYSQL_URL")
+    is_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PROJECT_ID"))
+
+    if database_url:
+        return database_url
+    if mysql_url:
+        return mysql_url
+    if is_railway:
+        raise RuntimeError(
+            "Persistent database URL is required on Railway. "
+            "Set DATABASE_URL for PostgreSQL or MYSQL_URL for MySQL."
+        )
+    return "sqlite:///bot.db"
+
+
 def normalize_database_url(url: str) -> str:
     if url.startswith("postgres://"):
         return "postgresql+psycopg://" + url.removeprefix("postgres://")
     if url.startswith("postgresql://"):
         return "postgresql+psycopg://" + url.removeprefix("postgresql://")
+    if url.startswith("mysql://"):
+        return "mysql+pymysql://" + url.removeprefix("mysql://")
+    if url.startswith("mysql2://"):
+        return "mysql+pymysql://" + url.removeprefix("mysql2://")
     return url
 
 
-DATABASE_URL = normalize_database_url(os.getenv("DATABASE_URL", "sqlite:///bot.db"))
+DATABASE_URL = normalize_database_url(raw_database_url())
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 engine = create_engine(DATABASE_URL, connect_args=connect_args, pool_pre_ping=True)
