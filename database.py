@@ -1,6 +1,7 @@
 import os
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from urllib.parse import quote_plus
 
 from dotenv import load_dotenv
 from sqlalchemy import BigInteger, Boolean, DateTime, ForeignKey, Integer, String, Text, create_engine
@@ -12,20 +13,57 @@ load_dotenv()
 def raw_database_url() -> str:
     database_url = os.getenv("DATABASE_URL")
     mysql_url = os.getenv("MYSQL_URL")
+    mysql_parts_url = build_mysql_url_from_parts()
 
     if database_url:
         return database_url
     if mysql_url:
         return mysql_url
+    if mysql_parts_url:
+        return mysql_parts_url
 
     is_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PROJECT_ID"))
     if is_railway:
+        present_mysql_keys = ", ".join(
+            key
+            for key in [
+                "MYSQL_URL",
+                "MYSQLHOST",
+                "MYSQLUSER",
+                "MYSQLPASSWORD",
+                "MYSQLPORT",
+                "MYSQLDATABASE",
+            ]
+            if os.getenv(key)
+        )
         raise RuntimeError(
             "DATABASE_URL or MYSQL_URL is required on Railway. "
             "For MySQL set DATABASE_URL=${{MySQL.MYSQL_URL}}. "
-            "Alternatively attach MySQL variables so MYSQL_URL is available."
+            "Alternatively attach MySQL variables so MYSQLHOST, MYSQLUSER, "
+            "MYSQLPASSWORD, MYSQLPORT, and MYSQLDATABASE are available. "
+            f"Currently present MySQL keys: {present_mysql_keys or 'none'}."
         )
     return "sqlite:///bot.db"
+
+
+def build_mysql_url_from_parts() -> str | None:
+    host = os.getenv("MYSQLHOST") or os.getenv("MYSQL_HOST")
+    user = os.getenv("MYSQLUSER") or os.getenv("MYSQL_USER")
+    password = (
+        os.getenv("MYSQLPASSWORD")
+        or os.getenv("MYSQL_PASSWORD")
+        or os.getenv("MYSQL_ROOT_PASSWORD")
+    )
+    port = os.getenv("MYSQLPORT") or os.getenv("MYSQL_PORT") or "3306"
+    database = os.getenv("MYSQLDATABASE") or os.getenv("MYSQL_DATABASE") or os.getenv("MYSQL_DATABASE_NAME")
+
+    if not all([host, user, password, database]):
+        return None
+
+    return (
+        f"mysql+pymysql://{quote_plus(user)}:{quote_plus(password)}"
+        f"@{host}:{port}/{quote_plus(database)}"
+    )
 
 
 def normalize_database_url(url: str) -> str:
