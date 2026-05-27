@@ -2,7 +2,17 @@
 
 Bu bot 10, 20 yoki 30 talik random test beradi, shuningdek 200 ta testni 50 tadan 4 ta variantga ajratadi. Har bir savolda birinchi javob bazaga to'g'ri javob sifatida yoziladi, bot esa foydalanuvchiga ko'rsatishda A/B/C/D variantlarni aralashtiradi.
 
-Asosiy menyuda `Testni boshlash` va `Natijalarim` tugmalari bor. `Natijalarim` bo'limida ishlangan testlar soni, jami savollar, to'g'ri/noto'g'ri javoblar va o'rtacha yechilish foizi ko'rinadi. Statistikani tozalash tugmasi faqat shu bo'lim ichida chiqadi.
+Asosiy menyuda `Testni boshlash`, `Natijalarim` va `Xatolarimni ishlash` tugmalari bor. `Natijalarim` bo'limida ishlangan testlar soni, jami savollar, to'g'ri/noto'g'ri javoblar, eng yaxshi natija, oxirgi testlar va o'rtacha yechilish foizi ko'rinadi. Statistikani tozalash tugmasi faqat shu bo'lim ichida chiqadi.
+
+Professional imkoniyatlar:
+
+- Test davomida progress: savol raqami, to'g'ri va noto'g'ri javoblar.
+- Yakuniy natija: foiz, daraja va sarflangan vaqt.
+- Random testlarda avval ishlanmagan savollar birinchi tanlanadi.
+- Noto'g'ri ishlangan savollar bo'yicha alohida test rejimi.
+- Admin panel: userlar ro'yxati, bugungi faollar, eng faol userlar, CSV export.
+- Admin qidiruvi: `/user username` yoki `/user telegram_id`.
+- Bot ishga tushganda adminlarga xabar yuboriladi.
 
 ## Lokal ishga tushirish
 

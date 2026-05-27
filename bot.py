@@ -1,15 +1,18 @@
 import asyncio
+import csv
+import io
 import logging
 import os
 import random
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, time, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from aiogram import Bot, Dispatcher, F
-from aiogram.filters import CommandStart
+from aiogram.filters import Command, CommandStart
 from aiogram.types import (
+    BufferedInputFile,
     CallbackQuery,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -66,6 +69,7 @@ class AnswerRecord:
 @dataclass
 class QuizState:
     question_ids: list[int]
+    title: str = "Test"
     current_index: int = 0
     correct_count: int = 0
     wrong_count: int = 0
@@ -81,6 +85,7 @@ def main_menu_keyboard(user_id: int | None = None) -> InlineKeyboardMarkup:
     rows = [
         [InlineKeyboardButton(text="Testni boshlash", callback_data="start_quiz")],
         [InlineKeyboardButton(text="Natijalarim", callback_data="stats")],
+        [InlineKeyboardButton(text="Xatolarimni ishlash", callback_data="wrong_quiz")],
     ]
     if user_id is not None and is_admin(user_id):
         rows.append([InlineKeyboardButton(text="Admin panel", callback_data="admin_panel")])
@@ -101,6 +106,8 @@ def reset_stats_keyboard() -> InlineKeyboardMarkup:
 def results_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
+            [InlineKeyboardButton(text="Oxirgi testlar", callback_data="my_history")],
+            [InlineKeyboardButton(text="Xatolarimni ishlash", callback_data="wrong_quiz")],
             [InlineKeyboardButton(text="Statistikani tozalash", callback_data="reset_stats_confirm")],
             [InlineKeyboardButton(text="Bosh menyu", callback_data="back_main")],
         ]
@@ -111,6 +118,9 @@ def admin_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Userlar ro'yxati", callback_data="admin_users:0")],
+            [InlineKeyboardButton(text="Eng faol userlar", callback_data="admin_top")],
+            [InlineKeyboardButton(text="Bugungi faollar", callback_data="admin_today")],
+            [InlineKeyboardButton(text="CSV export", callback_data="admin_export")],
             [InlineKeyboardButton(text="Bosh menyu", callback_data="back_main")],
         ]
     )
@@ -183,11 +193,43 @@ async def upsert_user(message_or_callback: Message | CallbackQuery) -> User:
         return user
 
 
-async def get_random_question_ids(limit: int) -> list[int]:
+async def get_random_question_ids(limit: int, user_id: int) -> list[int]:
     with get_session() as session:
-        ids = [row[0] for row in session.query(Question.id).all()]
-    random.shuffle(ids)
-    return ids[:limit]
+        user = session.query(User).filter(User.telegram_id == user_id).one_or_none()
+        all_ids = [row[0] for row in session.query(Question.id).all()]
+        answered_ids: set[int] = set()
+        if user:
+            answered_ids = {
+                row[0]
+                for row in (
+                    session.query(QuizAnswer.question_id)
+                    .join(QuizAttempt, QuizAnswer.attempt_id == QuizAttempt.id)
+                    .filter(QuizAttempt.user_id == user.id)
+                    .all()
+                )
+            }
+    fresh_ids = [question_id for question_id in all_ids if question_id not in answered_ids]
+    repeated_ids = [question_id for question_id in all_ids if question_id in answered_ids]
+    random.shuffle(fresh_ids)
+    random.shuffle(repeated_ids)
+    return (fresh_ids + repeated_ids)[:limit]
+
+
+async def get_wrong_question_ids(user_id: int, limit: int = 50) -> list[int]:
+    with get_session() as session:
+        user = session.query(User).filter(User.telegram_id == user_id).one_or_none()
+        if user is None:
+            return []
+        rows = (
+            session.query(QuizAnswer.question_id)
+            .join(QuizAttempt, QuizAnswer.attempt_id == QuizAttempt.id)
+            .filter(QuizAttempt.user_id == user.id, QuizAnswer.is_correct.is_(False))
+            .order_by(QuizAnswer.answered_at.desc())
+            .all()
+        )
+    question_ids = list(dict.fromkeys(row[0] for row in rows))
+    random.shuffle(question_ids)
+    return question_ids[:limit]
 
 
 async def get_variant_question_ids(variant_number: int, variant_size: int = 50) -> list[int]:
@@ -216,6 +258,35 @@ def seed_tests_if_empty() -> None:
     logger.info("Seeded %s tests from %s", imported_count, DEFAULT_TEST_FILE)
 
 
+def localized_datetime(value: datetime | None) -> datetime | None:
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    return value.astimezone(LOCAL_TIMEZONE)
+
+
+def format_duration(started_at: datetime, finished_at: datetime) -> str:
+    seconds = max(0, int((finished_at - started_at).total_seconds()))
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    if hours:
+        return f"{hours} soat {minutes} daqiqa"
+    if minutes:
+        return f"{minutes} daqiqa {seconds} soniya"
+    return f"{seconds} soniya"
+
+
+def result_grade(percent: float) -> str:
+    if percent >= 86:
+        return "A'lo"
+    if percent >= 71:
+        return "Yaxshi"
+    if percent >= 56:
+        return "Qoniqarli"
+    return "Ko'proq tayyorgarlik kerak"
+
+
 async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
     state = active_quizzes[user_id]
     if state.current_index >= len(state.question_ids):
@@ -232,7 +303,9 @@ async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
         f"{letter}) {option.text}" for letter, option in zip(["A", "B", "C", "D"], options)
     )
     text = (
-        f"Savol {state.current_index + 1}/{len(state.question_ids)}\n\n"
+        f"{state.title}\n"
+        f"Savol {state.current_index + 1}/{len(state.question_ids)} | "
+        f"To'g'ri: {state.correct_count} | Noto'g'ri: {state.wrong_count}\n\n"
         f"{question.text}\n\n"
         f"{variants}"
     )
@@ -263,6 +336,8 @@ async def finish_quiz(bot: Bot, chat_id: int, user_id: int, manually_finished: b
 
     percent = round((state.correct_count / total) * 100, 1) if total else 0
     finished_at = datetime.now(timezone.utc)
+    duration = format_duration(state.started_at, finished_at)
+    grade = result_grade(percent)
 
     with get_session() as session:
         db_user = session.query(User).filter(User.telegram_id == user_id).one()
@@ -297,10 +372,13 @@ async def finish_quiz(bot: Bot, chat_id: int, user_id: int, manually_finished: b
     await bot.send_message(
         chat_id,
         "Test yakunlandi!\n\n"
+        f"Test turi: {state.title}\n"
         f"Ishlangan savol: {total}\n"
         f"To'g'ri javoblar: {state.correct_count}\n"
         f"Noto'g'ri javoblar: {state.wrong_count}\n"
-        f"Natija: {percent}%",
+        f"Natija: {percent}%\n"
+        f"Daraja: {grade}\n"
+        f"Sarflangan vaqt: {duration}",
         reply_markup=ReplyKeyboardRemove(),
     )
     await bot.send_message(chat_id, "Bosh menyu", reply_markup=main_menu_keyboard(user_id))
@@ -315,14 +393,56 @@ async def show_stats(callback: CallbackQuery) -> None:
             if user.total_questions
             else 0
         )
+        best_attempt = (
+            session.query(QuizAttempt)
+            .filter(QuizAttempt.user_id == user.id)
+            .order_by((QuizAttempt.correct_count * 100.0 / QuizAttempt.question_count).desc())
+            .first()
+        )
+        best_percent = (
+            round((best_attempt.correct_count / best_attempt.question_count) * 100, 1)
+            if best_attempt and best_attempt.question_count
+            else 0
+        )
         text = (
             "Natijalarim:\n\n"
             f"Ishlangan testlar: {user.total_attempts}\n"
             f"Jami savollar: {user.total_questions}\n"
             f"To'g'ri javoblar: {user.total_correct}\n"
             f"Noto'g'ri javoblar: {user.total_wrong}\n"
-            f"O'rtacha yechilish: {percent}%"
+            f"O'rtacha yechilish: {percent}%\n"
+            f"Eng yaxshi natija: {best_percent}%"
         )
+    await callback.message.edit_text(text, reply_markup=results_keyboard())
+    await callback.answer()
+
+
+async def show_my_history(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    with get_session() as session:
+        user = session.query(User).filter(User.telegram_id == callback.from_user.id).one()
+        attempts = (
+            session.query(QuizAttempt)
+            .filter(QuizAttempt.user_id == user.id)
+            .order_by(QuizAttempt.finished_at.desc())
+            .limit(5)
+            .all()
+        )
+
+    if not attempts:
+        text = "Hali test ishlamagansiz."
+    else:
+        lines = []
+        for index, attempt in enumerate(attempts, start=1):
+            percent = round((attempt.correct_count / attempt.question_count) * 100, 1)
+            finished = localized_datetime(attempt.finished_at)
+            finished_text = finished.strftime("%Y-%m-%d %H:%M") if finished else "noma'lum"
+            lines.append(
+                f"{index}. {finished_text} | {attempt.question_count} savol | "
+                f"{attempt.correct_count} to'g'ri | {percent}%"
+            )
+        text = "Oxirgi testlar:\n\n" + "\n".join(lines)
+
     await callback.message.edit_text(text, reply_markup=results_keyboard())
     await callback.answer()
 
@@ -366,10 +486,7 @@ def format_user_line(user: User, number: int) -> str:
     username = f"@{user.username}" if user.username else "username yo'q"
     full_name = " ".join(part for part in [user.first_name, user.last_name] if part) or "ism yo'q"
     if user.last_seen_at:
-        last_seen_at = user.last_seen_at
-        if last_seen_at.tzinfo is None:
-            last_seen_at = last_seen_at.replace(tzinfo=timezone.utc)
-        last_seen = last_seen_at.astimezone(LOCAL_TIMEZONE).strftime("%Y-%m-%d %H:%M")
+        last_seen = localized_datetime(user.last_seen_at).strftime("%Y-%m-%d %H:%M")
     else:
         last_seen = "noma'lum"
     return (
@@ -388,14 +505,143 @@ async def admin_panel(callback: CallbackQuery) -> None:
     with get_session() as session:
         users_count = session.query(User).count()
         attempts_count = session.query(QuizAttempt).count()
+        questions_count = session.query(Question).count()
+        today_start_local = datetime.combine(datetime.now(LOCAL_TIMEZONE).date(), time.min, LOCAL_TIMEZONE)
+        today_start_utc = today_start_local.astimezone(timezone.utc)
+        today_users = session.query(User).filter(User.last_seen_at >= today_start_utc).count()
 
     await callback.message.edit_text(
         "Admin panel\n\n"
         f"Userlar soni: {users_count}\n"
-        f"Test urinishlari: {attempts_count}",
+        f"Bugun faol: {today_users}\n"
+        f"Test urinishlari: {attempts_count}\n"
+        f"Bazadagi savollar: {questions_count}\n\n"
+        "User qidirish: /user username yoki /user telegram_id",
         reply_markup=admin_keyboard(),
     )
     await callback.answer()
+
+
+async def admin_top(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Siz admin emassiz.", show_alert=True)
+        return
+
+    with get_session() as session:
+        users = (
+            session.query(User)
+            .order_by(User.total_questions.desc(), User.total_correct.desc())
+            .limit(10)
+            .all()
+        )
+    text = "Eng faol userlar:\n\n" + "\n\n".join(
+        format_user_line(user, index) for index, user in enumerate(users, start=1)
+    ) if users else "Hali userlar yo'q."
+    await callback.message.edit_text(text, reply_markup=admin_keyboard())
+    await callback.answer()
+
+
+async def admin_today(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Siz admin emassiz.", show_alert=True)
+        return
+
+    today_start_local = datetime.combine(datetime.now(LOCAL_TIMEZONE).date(), time.min, LOCAL_TIMEZONE)
+    today_start_utc = today_start_local.astimezone(timezone.utc)
+    with get_session() as session:
+        users = (
+            session.query(User)
+            .filter(User.last_seen_at >= today_start_utc)
+            .order_by(User.last_seen_at.desc())
+            .limit(20)
+            .all()
+        )
+    text = "Bugungi faollar:\n\n" + "\n\n".join(
+        format_user_line(user, index) for index, user in enumerate(users, start=1)
+    ) if users else "Bugun faol userlar yo'q."
+    await callback.message.edit_text(text, reply_markup=admin_keyboard())
+    await callback.answer()
+
+
+async def admin_export(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Siz admin emassiz.", show_alert=True)
+        return
+
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(
+        [
+            "telegram_id",
+            "username",
+            "first_name",
+            "last_name",
+            "total_attempts",
+            "total_questions",
+            "total_correct",
+            "total_wrong",
+            "average_percent",
+            "last_seen",
+        ]
+    )
+    with get_session() as session:
+        users = session.query(User).order_by(User.last_seen_at.desc()).all()
+        for user in users:
+            average = round((user.total_correct / user.total_questions) * 100, 1) if user.total_questions else 0
+            last_seen = localized_datetime(user.last_seen_at)
+            writer.writerow(
+                [
+                    user.telegram_id,
+                    user.username or "",
+                    user.first_name or "",
+                    user.last_name or "",
+                    user.total_attempts,
+                    user.total_questions,
+                    user.total_correct,
+                    user.total_wrong,
+                    average,
+                    last_seen.strftime("%Y-%m-%d %H:%M") if last_seen else "",
+                ]
+            )
+
+    file = BufferedInputFile(output.getvalue().encode("utf-8-sig"), filename="users_export.csv")
+    await callback.message.answer_document(file, caption="Userlar eksporti")
+    await callback.answer()
+
+
+async def admin_user_search(message: Message) -> None:
+    await upsert_user(message)
+    if not is_admin(message.from_user.id):
+        await message.answer("Siz admin emassiz.")
+        return
+
+    parts = message.text.split(maxsplit=1)
+    if len(parts) < 2:
+        await message.answer("Qidirish uchun: /user username yoki /user telegram_id")
+        return
+
+    query = parts[1].strip().lstrip("@")
+    with get_session() as session:
+        if query.isdigit():
+            user = session.query(User).filter(User.telegram_id == int(query)).one_or_none()
+        else:
+            user = session.query(User).filter(User.username == query).one_or_none()
+
+    if user is None:
+        await message.answer("User topilmadi.")
+        return
+    await message.answer(format_user_line(user, 1))
+
+
+async def notify_admins_on_startup(bot: Bot) -> None:
+    for admin_id in admin_ids():
+        try:
+            await bot.send_message(admin_id, "Bot ishga tushdi.")
+        except Exception:
+            logger.exception("Could not notify admin %s on startup", admin_id)
 
 
 async def admin_users(callback: CallbackQuery) -> None:
@@ -455,7 +701,7 @@ async def on_start_quiz(callback: CallbackQuery) -> None:
 async def on_quiz_size(callback: CallbackQuery) -> None:
     await upsert_user(callback)
     size = int(callback.data.split(":")[1])
-    question_ids = await get_random_question_ids(size)
+    question_ids = await get_random_question_ids(size, callback.from_user.id)
 
     if len(question_ids) < size:
         await callback.message.edit_text(
@@ -467,6 +713,7 @@ async def on_quiz_size(callback: CallbackQuery) -> None:
 
     active_quizzes[callback.from_user.id] = QuizState(
         question_ids=question_ids,
+        title=f"Random {size} talik test",
         started_at=datetime.now(timezone.utc),
     )
     await callback.message.edit_text("Test boshlandi. Omad!")
@@ -493,9 +740,35 @@ async def on_quiz_variant(callback: CallbackQuery) -> None:
 
     active_quizzes[callback.from_user.id] = QuizState(
         question_ids=question_ids,
+        title=f"{variant_number}-variant (50 ta)",
         started_at=datetime.now(timezone.utc),
     )
     await callback.message.edit_text(f"{variant_number}-variant boshlandi. Omad!")
+    await callback.message.answer(
+        "Test davomida pastdagi tugma orqali testni yakunlashingiz mumkin.",
+        reply_markup=quiz_reply_keyboard(),
+    )
+    await send_question(callback.bot, callback.message.chat.id, callback.from_user.id)
+    await callback.answer()
+
+
+async def on_wrong_quiz(callback: CallbackQuery) -> None:
+    await upsert_user(callback)
+    question_ids = await get_wrong_question_ids(callback.from_user.id)
+    if not question_ids:
+        await callback.message.edit_text(
+            "Hozircha noto'g'ri ishlangan savollaringiz yo'q.",
+            reply_markup=main_menu_keyboard(callback.from_user.id),
+        )
+        await callback.answer()
+        return
+
+    active_quizzes[callback.from_user.id] = QuizState(
+        question_ids=question_ids,
+        title="Xatolarimni qayta ishlash",
+        started_at=datetime.now(timezone.utc),
+    )
+    await callback.message.edit_text("Xatolar bo'yicha test boshlandi.")
     await callback.message.answer(
         "Test davomida pastdagi tugma orqali testni yakunlashingiz mumkin.",
         reply_markup=quiz_reply_keyboard(),
@@ -599,8 +872,11 @@ async def main() -> None:
     seed_tests_if_empty()
 
     bot = Bot(token=token)
+    await notify_admins_on_startup(bot)
+
     dp = Dispatcher()
     dp.message.register(on_start, CommandStart())
+    dp.message.register(admin_user_search, Command("user"))
     dp.message.register(on_finish_test, F.text == FINISH_TEST_TEXT)
     dp.callback_query.register(on_start_quiz, F.data == "start_quiz")
     dp.callback_query.register(on_quiz_size, F.data.startswith("quiz_size:"))
@@ -608,10 +884,15 @@ async def main() -> None:
     dp.callback_query.register(on_answer, F.data.startswith("answer:"))
     dp.callback_query.register(on_next_question, F.data == "next_question")
     dp.callback_query.register(show_stats, F.data == "stats")
+    dp.callback_query.register(show_my_history, F.data == "my_history")
+    dp.callback_query.register(on_wrong_quiz, F.data == "wrong_quiz")
     dp.callback_query.register(confirm_reset_stats, F.data == "reset_stats_confirm")
     dp.callback_query.register(reset_stats, F.data == "reset_stats")
     dp.callback_query.register(admin_panel, F.data == "admin_panel")
     dp.callback_query.register(admin_users, F.data.startswith("admin_users:"))
+    dp.callback_query.register(admin_top, F.data == "admin_top")
+    dp.callback_query.register(admin_today, F.data == "admin_today")
+    dp.callback_query.register(admin_export, F.data == "admin_export")
     dp.callback_query.register(on_back_main, F.data == "back_main")
 
     await dp.start_polling(bot)
