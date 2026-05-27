@@ -14,7 +14,6 @@ def raw_database_url() -> str:
     database_url = os.getenv("DATABASE_URL")
     mysql_url = os.getenv("MYSQL_URL")
     built_mysql_url = build_mysql_url_from_parts()
-    is_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PROJECT_ID"))
 
     if database_url and database_url != "sqlite:///bot.db":
         return database_url
@@ -22,11 +21,8 @@ def raw_database_url() -> str:
         return mysql_url
     if built_mysql_url:
         return built_mysql_url
-    if is_railway:
-        raise RuntimeError(
-            "Persistent database URL is required on Railway. "
-            "Set DATABASE_URL for PostgreSQL or MYSQL_URL for MySQL."
-        )
+    if os.path.isdir("/data"):
+        return "sqlite:////data/bot.db"
     return "sqlite:///bot.db"
 
 
