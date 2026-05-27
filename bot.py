@@ -8,7 +8,15 @@ from pathlib import Path
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
-from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from aiogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+)
 from dotenv import load_dotenv
 
 from database import (
@@ -27,6 +35,7 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 DEFAULT_TEST_FILE = Path("tests_2025_26.json")
+FINISH_TEST_TEXT = "Testni yakunlash"
 
 
 def admin_ids() -> set[int]:
@@ -148,6 +157,14 @@ def next_keyboard(is_finished: bool = False) -> InlineKeyboardMarkup:
     )
 
 
+def quiz_reply_keyboard() -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=FINISH_TEST_TEXT)]],
+        resize_keyboard=True,
+        one_time_keyboard=False,
+    )
+
+
 async def upsert_user(message_or_callback: Message | CallbackQuery) -> User:
     tg_user = message_or_callback.from_user
     with get_session() as session:
@@ -221,13 +238,27 @@ async def send_question(bot: Bot, chat_id: int, user_id: int) -> None:
     await bot.send_message(chat_id, text, reply_markup=answer_keyboard(question_id, options))
 
 
-async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
+async def finish_quiz(bot: Bot, chat_id: int, user_id: int, manually_finished: bool = False) -> None:
     state = active_quizzes.pop(user_id, None)
     if state is None:
-        await bot.send_message(chat_id, "Faol test topilmadi.", reply_markup=main_menu_keyboard(user_id))
+        await bot.send_message(
+            chat_id,
+            "Faol test topilmadi.",
+            reply_markup=ReplyKeyboardRemove(),
+        )
+        await bot.send_message(chat_id, "Bosh menyu", reply_markup=main_menu_keyboard(user_id))
         return
 
-    total = len(state.question_ids)
+    total = len(state.answers) if manually_finished else len(state.question_ids)
+    if total == 0:
+        await bot.send_message(
+            chat_id,
+            "Test yakunlandi. Hali hech bir savolga javob berilmagan.",
+            reply_markup=ReplyKeyboardRemove(),
+        )
+        await bot.send_message(chat_id, "Bosh menyu", reply_markup=main_menu_keyboard(user_id))
+        return
+
     percent = round((state.correct_count / total) * 100, 1) if total else 0
     finished_at = datetime.now(timezone.utc)
 
@@ -264,12 +295,13 @@ async def finish_quiz(bot: Bot, chat_id: int, user_id: int) -> None:
     await bot.send_message(
         chat_id,
         "Test yakunlandi!\n\n"
-        f"Jami savol: {total}\n"
+        f"Ishlangan savol: {total}\n"
         f"To'g'ri javoblar: {state.correct_count}\n"
         f"Noto'g'ri javoblar: {state.wrong_count}\n"
         f"Natija: {percent}%",
-        reply_markup=main_menu_keyboard(user_id),
+        reply_markup=ReplyKeyboardRemove(),
     )
+    await bot.send_message(chat_id, "Bosh menyu", reply_markup=main_menu_keyboard(user_id))
 
 
 async def show_stats(callback: CallbackQuery) -> None:
@@ -430,6 +462,10 @@ async def on_quiz_size(callback: CallbackQuery) -> None:
         started_at=datetime.now(timezone.utc),
     )
     await callback.message.edit_text("Test boshlandi. Omad!")
+    await callback.message.answer(
+        "Test davomida pastdagi tugma orqali testni yakunlashingiz mumkin.",
+        reply_markup=quiz_reply_keyboard(),
+    )
     await send_question(callback.bot, callback.message.chat.id, callback.from_user.id)
     await callback.answer()
 
@@ -452,8 +488,25 @@ async def on_quiz_variant(callback: CallbackQuery) -> None:
         started_at=datetime.now(timezone.utc),
     )
     await callback.message.edit_text(f"{variant_number}-variant boshlandi. Omad!")
+    await callback.message.answer(
+        "Test davomida pastdagi tugma orqali testni yakunlashingiz mumkin.",
+        reply_markup=quiz_reply_keyboard(),
+    )
     await send_question(callback.bot, callback.message.chat.id, callback.from_user.id)
     await callback.answer()
+
+
+async def on_finish_test(message: Message) -> None:
+    await upsert_user(message)
+    if message.from_user.id not in active_quizzes:
+        await message.answer(
+            "Hozir faol test yo'q.",
+            reply_markup=ReplyKeyboardRemove(),
+        )
+        await message.answer("Bosh menyu", reply_markup=main_menu_keyboard(message.from_user.id))
+        return
+
+    await finish_quiz(message.bot, message.chat.id, message.from_user.id, manually_finished=True)
 
 
 async def on_answer(callback: CallbackQuery) -> None:
@@ -540,6 +593,7 @@ async def main() -> None:
     bot = Bot(token=token)
     dp = Dispatcher()
     dp.message.register(on_start, CommandStart())
+    dp.message.register(on_finish_test, F.text == FINISH_TEST_TEXT)
     dp.callback_query.register(on_start_quiz, F.data == "start_quiz")
     dp.callback_query.register(on_quiz_size, F.data.startswith("quiz_size:"))
     dp.callback_query.register(on_quiz_variant, F.data.startswith("quiz_variant:"))
