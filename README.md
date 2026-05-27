@@ -80,9 +80,10 @@ Noto'g'ri 3
 
 1. Railway loyihaga PostgreSQL yoki MySQL qo'shing.
 2. Variables bo'limiga `BOT_TOKEN` qo'shing.
-3. Worker service'da `DATABASE_URL` bo'lishi kerak:
+3. Worker service'da `DATABASE_URL` yoki `MYSQL_URL` bo'lishi kerak:
    - MySQL uchun: `DATABASE_URL=${{MySQL.MYSQL_URL}}`
    - PostgreSQL uchun: `DATABASE_URL=${{Postgres.DATABASE_URL}}`
+   - Agar Railway worker'ga `MYSQL_URL` ni o'zi qo'shgan bo'lsa, shu ham yetadi.
 4. Admin panel kerak bo'lsa `ADMIN_IDS` qo'shing. Bir nechta admin bo'lsa vergul bilan yozing: `123,456`.
 5. Deploy qiling. `Procfile` worker jarayonni ishga tushiradi.
 6. Railway shell yoki lokal terminal orqali bir marta import qiling:
@@ -93,4 +94,4 @@ python import_tests.py tests_2025_26.json --replace
 
 Muhim: tokenni GitHub yoki ommaviy joyga joylamang. Token oshkor bo'lgan bo'lsa, BotFather orqali tokenni yangilang.
 
-Railway'da `DATABASE_URL` ulanmagan bo'lsa bot ishga tushmaydi. Bu user ma'lumotlari SQLite faylga yozilib, keyingi deployda o'chib ketmasligi uchun ataylab qilingan.
+Railway'da `DATABASE_URL` yoki `MYSQL_URL` ulanmagan bo'lsa bot ishga tushmaydi. Bu user ma'lumotlari SQLite faylga yozilib, keyingi deployda o'chib ketmasligi uchun ataylab qilingan.

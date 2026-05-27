@@ -11,16 +11,19 @@ load_dotenv()
 
 def raw_database_url() -> str:
     database_url = os.getenv("DATABASE_URL")
+    mysql_url = os.getenv("MYSQL_URL")
 
     if database_url:
         return database_url
+    if mysql_url:
+        return mysql_url
 
     is_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PROJECT_ID"))
     if is_railway:
         raise RuntimeError(
-            "DATABASE_URL is required on Railway. "
+            "DATABASE_URL or MYSQL_URL is required on Railway. "
             "For MySQL set DATABASE_URL=${{MySQL.MYSQL_URL}}. "
-            "For PostgreSQL set DATABASE_URL=${{Postgres.DATABASE_URL}}."
+            "Alternatively attach MySQL variables so MYSQL_URL is available."
         )
     return "sqlite:///bot.db"
 
