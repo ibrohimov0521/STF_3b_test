@@ -1,6 +1,7 @@
 import os
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from urllib.parse import quote_plus
 
 from dotenv import load_dotenv
 from sqlalchemy import BigInteger, Boolean, DateTime, ForeignKey, Integer, String, Text, create_engine
@@ -12,18 +13,37 @@ load_dotenv()
 def raw_database_url() -> str:
     database_url = os.getenv("DATABASE_URL")
     mysql_url = os.getenv("MYSQL_URL")
+    built_mysql_url = build_mysql_url_from_parts()
     is_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PROJECT_ID"))
 
-    if database_url:
+    if database_url and database_url != "sqlite:///bot.db":
         return database_url
-    if mysql_url:
+    if mysql_url and not mysql_url.startswith("${{"):
         return mysql_url
+    if built_mysql_url:
+        return built_mysql_url
     if is_railway:
         raise RuntimeError(
             "Persistent database URL is required on Railway. "
             "Set DATABASE_URL for PostgreSQL or MYSQL_URL for MySQL."
         )
     return "sqlite:///bot.db"
+
+
+def build_mysql_url_from_parts() -> str | None:
+    host = os.getenv("MYSQLHOST") or os.getenv("MYSQL_HOST")
+    port = os.getenv("MYSQLPORT") or os.getenv("MYSQL_PORT") or "3306"
+    user = os.getenv("MYSQLUSER") or os.getenv("MYSQL_USER")
+    password = os.getenv("MYSQLPASSWORD") or os.getenv("MYSQL_PASSWORD")
+    database = os.getenv("MYSQLDATABASE") or os.getenv("MYSQL_DATABASE")
+
+    if not all([host, user, password, database]):
+        return None
+
+    return (
+        f"mysql+pymysql://{quote_plus(user)}:{quote_plus(password)}"
+        f"@{host}:{port}/{quote_plus(database)}"
+    )
 
 
 def normalize_database_url(url: str) -> str:
