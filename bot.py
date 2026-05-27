@@ -5,6 +5,7 @@ import random
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
@@ -36,6 +37,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 DEFAULT_TEST_FILE = Path("tests_2025_26.json")
 FINISH_TEST_TEXT = "Testni yakunlash"
+LOCAL_TIMEZONE = ZoneInfo(os.getenv("TIMEZONE", "Asia/Tashkent"))
 
 
 def admin_ids() -> set[int]:
@@ -363,7 +365,13 @@ async def reset_stats(callback: CallbackQuery) -> None:
 def format_user_line(user: User, number: int) -> str:
     username = f"@{user.username}" if user.username else "username yo'q"
     full_name = " ".join(part for part in [user.first_name, user.last_name] if part) or "ism yo'q"
-    last_seen = user.last_seen_at.strftime("%Y-%m-%d %H:%M UTC") if user.last_seen_at else "noma'lum"
+    if user.last_seen_at:
+        last_seen_at = user.last_seen_at
+        if last_seen_at.tzinfo is None:
+            last_seen_at = last_seen_at.replace(tzinfo=timezone.utc)
+        last_seen = last_seen_at.astimezone(LOCAL_TIMEZONE).strftime("%Y-%m-%d %H:%M")
+    else:
+        last_seen = "noma'lum"
     return (
         f"{number}. {username} | {full_name}\n"
         f"ID: {user.telegram_id} | Oxirgi faollik: {last_seen}\n"
