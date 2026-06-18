@@ -130,7 +130,7 @@ def quiz_size_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [
-                InlineKeyboardButton(text="10 talik", callback_data="quiz_size:10"),
+                InlineKeyboardButton(text="50 talik", callback_data="quiz_size:50"),
                 InlineKeyboardButton(text="20 talik", callback_data="quiz_size:20"),
                 InlineKeyboardButton(text="30 talik", callback_data="quiz_size:30"),
             ],
