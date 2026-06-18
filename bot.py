@@ -572,37 +572,39 @@ async def admin_export(callback: CallbackQuery) -> None:
         return
 
     output = io.StringIO()
-    writer = csv.writer(output)
+    writer = csv.writer(output, delimiter=";")
     writer.writerow(
         [
-            "telegram_id",
-            "username",
-            "first_name",
-            "last_name",
-            "total_attempts",
-            "total_questions",
-            "total_correct",
-            "total_wrong",
-            "average_percent",
-            "last_seen",
+            "#",
+            "Telegram ID",
+            "Username",
+            "Ism",
+            "Familiya",
+            "Testlar soni",
+            "Jami savollar",
+            "To'g'ri",
+            "Noto'g'ri",
+            "O'rtacha %",
+            "Oxirgi faollik",
         ]
     )
     with get_session() as session:
         users = session.query(User).order_by(User.last_seen_at.desc()).all()
-        for user in users:
+        for index, user in enumerate(users, start=1):
             average = round((user.total_correct / user.total_questions) * 100, 1) if user.total_questions else 0
             last_seen = localized_datetime(user.last_seen_at)
             writer.writerow(
                 [
+                    index,
                     user.telegram_id,
-                    user.username or "",
+                    f"@{user.username}" if user.username else "",
                     user.first_name or "",
                     user.last_name or "",
                     user.total_attempts,
                     user.total_questions,
                     user.total_correct,
                     user.total_wrong,
-                    average,
+                    f"{average}%",
                     last_seen.strftime("%Y-%m-%d %H:%M") if last_seen else "",
                 ]
             )
