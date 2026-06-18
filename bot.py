@@ -572,6 +572,7 @@ async def admin_export(callback: CallbackQuery) -> None:
         return
 
     output = io.StringIO()
+    output.write("sep=\t\n")
     writer = csv.writer(output, delimiter="\t")
     writer.writerow(
         [
@@ -609,7 +610,7 @@ async def admin_export(callback: CallbackQuery) -> None:
                 ]
             )
 
-    file = BufferedInputFile(output.getvalue().encode("utf-8-sig"), filename="users_export.tsv")
+    file = BufferedInputFile(output.getvalue().encode("utf-8-sig"), filename="users_export.csv")
     await callback.message.answer_document(file, caption="Userlar eksporti")
     await callback.answer()
 
